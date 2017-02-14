@@ -4,27 +4,37 @@
       <img class="logo" src="http://okxwe70nc.bkt.clouddn.com/2017-02-07--12-49-02">
       <h1> </h1>
     </div>
+    <alert v-model="show" :title="title1" @on-show="onShow" @on-hide="onHide">警告内容</alert>
     <group title="cell demo">
-      <cell title="Vux" value="Cool" is-link></cell>
+     <x-switch :title="title2" v-model="show"></x-switch>
     </group>
   </div>
 </template>
 
 <script>
-import { Group, Cell } from 'vux'
+import { Group,XSwitch, Cell,Alert } from 'vux'
+
 
 export default {
   components: {
+    Alert,
     Group,
+    XSwitch,
     Cell
   },
   data () {
     return {
-      // note: changing this line won't causes changes
-      // with hot-reload because the reloaded component
-      // preserves its current state and we are modifying
-      // its initial state.
-      msg: 'Hello World!'
+      show:false,
+      title1:"标题1",
+      title2:"标题2"
+    }
+  },
+  methods: {
+    onHide () {
+      console.log('on hide')
+    },
+    onShow () {
+      console.log('on show')
     }
   }
 }
