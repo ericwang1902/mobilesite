@@ -1,0 +1,9 @@
+<template>
+    <div>
+        suiteitem
+    </div>
+</template>
+<script>
+</script>
+<style>
+</style>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <top></top>
     <div class="vux-demo">
       <img class="logo" src="http://okxwe70nc.bkt.clouddn.com/2017-02-07--12-49-02">
       <h1> </h1>
@@ -13,14 +14,15 @@
 
 <script>
 import { Group,XSwitch, Cell,Alert } from 'vux'
-
+import top from './top'
 
 export default {
   components: {
     Alert,
     Group,
     XSwitch,
-    Cell
+    Cell,
+    top
   },
   data () {
     return {
@@ -42,6 +44,7 @@ export default {
 
 <style>
 .vux-demo {
+  margin-top: 2px;
   text-align: center;
 }
 .logo {

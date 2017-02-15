@@ -6,12 +6,17 @@ import VueRouter from 'vue-router'
 import App from './App'
 import Hello from './components/HelloFromVux'
 
+
+import index from './pages/index'
+
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+  {
   path: '/',
-  component: Hello
-}]
+  component: index
+  }
+]
 
 const router = new VueRouter({
   routes
