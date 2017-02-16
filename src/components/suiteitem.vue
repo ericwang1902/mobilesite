@@ -1,12 +1,7 @@
 <template>
-    <masker style="border-radius: 2px;">
-        <div class="m-img" :style="{backgroundImage: 'url(' + suitephoto + ')'}"></div>
-        <div slot="content" class="m-title">
-          {{suitename}}
-          <br/>
-          <!--<span class="m-time">{{suitedes}}</span>-->
-        </div>
-      </masker>
+    <div :style="styleObj" >
+        
+    </div>
 
 </template>
 <script>
@@ -19,6 +14,15 @@
                 'suiteprice'],
         components:{
             Masker
+        },
+        data () {
+            return {
+                styleObj:{
+                    background:'url(' + this.suitephoto + ') 0% 0% / 100% 100% no-repeat',
+                    width:'100%',
+                    height:'200px'
+                }
+            }
         }
     }
 

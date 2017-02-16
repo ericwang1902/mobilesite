@@ -1,7 +1,7 @@
 <template>
     <scroller lock-x ref="scroller" >
         <div>
-            <div style="margin: 10px;" v-for='suite in suiteArray'>
+            <div  v-for='suite in suiteArray'>
                 <suiteitem :suitename='suite.suitename' :suitedes='suite.suitedes' :suitephoto='suite.suitephoto' :suiteprice='suite.suiteprice'></suiteitem>
             </div>
         </div>
