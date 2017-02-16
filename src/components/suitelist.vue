@@ -1,5 +1,5 @@
 <template>
-    <scroller lock-x ref="scroller" >
+    <scroller scrollbar-y lock-x height="100%" ref="scroller" >
         <div>
             <div  v-for='suite in suiteArray'>
                 <suiteitem :suitename='suite.suitename' :suitedes='suite.suitedes' :suitephoto='suite.suitephoto' :suiteprice='suite.suiteprice'></suiteitem>
