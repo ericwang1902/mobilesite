@@ -6,6 +6,10 @@ import VueRouter from 'vue-router'
 import App from './App'
 import Hello from './components/HelloFromVux'
 
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
 
 import index from './pages/index'
 

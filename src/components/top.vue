@@ -17,7 +17,7 @@ export default {
     data () {
         return {
             title:"本轮下单将于15点结束",
-            time1: '2017-02-16 12:00'
+            time1: '2017-02-16 13:00'
         }
     }
 }
