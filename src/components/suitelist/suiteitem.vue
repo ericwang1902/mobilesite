@@ -1,6 +1,5 @@
 <template>
     <div class="suiteItem">
-        
     </div>
 </template>
 <script>
