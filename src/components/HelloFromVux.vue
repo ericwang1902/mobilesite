@@ -33,7 +33,7 @@ export default {
       console.log('on hide')
     },
     onShow () {
-      console.log('on show')
+      console.log('on show');
     }
   }
 }

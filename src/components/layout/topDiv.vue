@@ -7,6 +7,7 @@
 import { XHeader, Clocker,Cell } from 'vux'
 
 export default {
+    
     components: {
         XHeader,
         Clocker,

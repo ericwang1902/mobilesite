@@ -5,8 +5,10 @@
 </template>
 
 <script>
+export default {
+    
+}
 </script>
-
 <style>
 .WFooter{
     position: fixed;
