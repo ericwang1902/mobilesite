@@ -1,8 +1,6 @@
 <template>
     <div >
-        <x-header :left-options="{showBack: false}">
-            <clocker  style="font-size: 12px" :time="time1">%H小时 %M 分 %S 秒</clocker>
-        </x-header>
+        top
     </div>
 </template>
 <script>
