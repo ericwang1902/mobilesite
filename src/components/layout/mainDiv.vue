@@ -26,7 +26,7 @@ export default {
 }
 .suitescontent{
     flex: 1 0 auto;/*设置自动占满除了“占位的30px之外的所有位置”*/
-    background-color:blue;
+    background-color:#EFEFEF;
 }
 .zhanwei{
     flex: 0 0 30px;
