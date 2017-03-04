@@ -1,7 +1,7 @@
 <template>
     <div class="mainCls">
         <div class="suitescontent">
-            <suitelist></suitelist>
+            <router-view></router-view>
         </div>
         <div class="zhanwei"></div>
     </div>

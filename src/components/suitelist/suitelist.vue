@@ -20,10 +20,11 @@
         },
         created() {
             this.getSuites();
+            console.log(JSON.stringify(this.$route.query.userid));
         },
         methods: {
             getSuites: function () {
-                this.axios.get(config.suite).then((response) => {
+                this.axios.get(config.suite+'?userid='+this.$route.query.userid).then((response) => {
                     this.suitelist = response.data;
                     console.log(this.suitelist);
                     

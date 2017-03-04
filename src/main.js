@@ -12,13 +12,17 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
 
 import index from './pages/index'
+import initfan from  './components/initfans/initfan'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-  path: '/',
-  component: index
+    path: '/',
+    component: index,
+    children: [
+        {path:'initfan',component:initfan,meta: { title: "设置地区" }}
+    ]
   }
 ]
 
