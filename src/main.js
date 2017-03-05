@@ -13,6 +13,7 @@ Vue.use(VueAxios, axios)
 
 import index from './pages/index'
 import initfan from  './components/initfans/initfan'
+import suitelist from './components/suitelist/suitelist'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,7 @@ const routes = [
     path: '/',
     component: index,
     children: [
+        {path:'home',component:suitelist,meta: { title:"货架" }},
         {path:'initfan',component:initfan,meta: { title: "设置地区" }}
     ]
   }
