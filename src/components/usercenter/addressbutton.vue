@@ -1,0 +1,9 @@
+<template>
+    <div>
+        添加地址form的submit按钮
+    </div>
+</template>
+<script>
+</script>
+<style>
+</style>

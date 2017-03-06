@@ -1,6 +1,6 @@
 <template>
     <div class="WFooter">
-        footer
+        <router-view name="b"></router-view>
     </div>
 </template>
 
