@@ -14,8 +14,8 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
 
 import index from './pages/index'
-import initfan from './components/initfans/initfan'
-import footer1 from './components/initfans/footer1'
+import initfan from './components/initfan/initfan'
+import footer1 from './components/initfan/footer1'
 import suitelist from './components/suitelist/suitelist'
 
 

@@ -1,12 +1,12 @@
 <template>
-    <div class="WFooter">
-        <router-view name="b"></router-view>
+    <div  class="WFooter">
+        <router-view  name="b"></router-view>
     </div>
 </template>
 
 <script>
 export default {
-    
+
 }
 </script>
 <style>

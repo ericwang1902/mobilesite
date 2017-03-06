@@ -6,8 +6,7 @@ Vue.use(Vuex)
 
 var userid = "";
 var footer={
-    isShow:true,//是否显示
-    type:""//显示的类型
+    isShow:true//是否显示
 };//底部的固定按钮类型，用来决定footer的显示内容
 
 
@@ -23,7 +22,7 @@ const mutations = {
         state.userid = userid;
     },
     setFooter:function(state,footer){
-
+        state.footer = footer; 
     }
 }
 

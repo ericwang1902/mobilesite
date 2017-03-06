@@ -1,7 +1,7 @@
 <template>
     <div class="indexCls">
         <main-div></main-div>
-        <footer-div></footer-div>
+        <footer-div v-if="$store.getters.getFooter.isShow"></footer-div>
     </div>
 </template>
 <script>
@@ -14,12 +14,19 @@
             topDiv,
             mainDiv,
             footerDiv
+        },
+        created() {
+            console.log(this.$route.path)
+            if (this.$route.path == '/initfan') {
+                this.$store.commit('setFooter', { isShow: false })
+            }
         }
     }
+
 </script>
 <style>
-.indexCls{
-    height: 100%;
-    width: 100%;
-}
+    .indexCls {
+        height: 100%;
+        width: 100%;
+    }
 </style>
