@@ -1,6 +1,6 @@
 <template>
     <div>
-        新增地址form
+        addressform
     </div>
 </template>
 <script>

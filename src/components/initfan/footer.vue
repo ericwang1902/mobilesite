@@ -1,7 +1,7 @@
 <template>
     <!--作废-->
     <div class="f1">
-        <x-button type= 'primary' @click.native="submitData">提交</x-button>
+        <x-button @click.native="gotoAddAddress">立即添加地址</x-button>
     </div>
 </template>
 <script>
@@ -11,8 +11,8 @@
             XButton
         },
         methods:{
-            submitData:function(){
-                console.log("提交数据")
+            gotoAddAddress:function(){
+                this.$router.push({ name: 'modifyadd'});
             }
         }
     }
@@ -20,9 +20,7 @@
 </script>
 <style>
 .f1{
-    margin-bottom: 1px;
-    padding-left: 2px;
-    padding-right: 2px;
+    margin-bottom: 2px;
 }
 
 </style>
