@@ -1,7 +1,6 @@
 <template>
-    <!--作废-->
     <div class="f1">
-        <x-button @click.native="gotoAddAddress">立即添加地址</x-button>
+        <x-button @click.native="gotoAddAddress">添加地址</x-button>
     </div>
 </template>
 <script>

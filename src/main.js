@@ -21,7 +21,8 @@ import suitelist from './components/suitelist/suitelist'
 import message from './components/initfan/initmsg'
 //usercenter
 import addressform from './components/usercenter/addressform'//地址form
-import addressbutton from './components/usercenter/addressbutton'//地址form的确认按钮
+import addresslist from './components/usercenter/addresslist'//地址列表
+import btntoadd from './components/usercenter/btntoadd'//地址列表底部的按钮
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,9 @@ const routes = [
       {
        // path: 'modifyadd',name: 'modifyadd', components: { a: addressform, b: addressbutton }, meta: { title: "添加地址" }
         path: 'modifyadd',name: 'modifyadd', components: { a: addressform }, meta: { title: "添加地址" }
+      },
+      {
+        path:'addlist',name:'addlist',components:{a:addresslist,b:btntoadd},meta:{title:"地址列表"}
       }
     ]
   }

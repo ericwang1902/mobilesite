@@ -113,6 +113,7 @@ export default {
             console.log('on hide')
             if(this.type==1){
                 console.log("go back to list");
+                this.$router.push({ name: 'addlist'});
             }else{
                 console.log("fill the form again")
             }
