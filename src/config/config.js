@@ -7,6 +7,4 @@ var config = {
     mdistricts: baseURL + "/sysmanage/mdistrict"//地区选择器的数据
 }
 
-export default {
-    config
-};
+export default config;

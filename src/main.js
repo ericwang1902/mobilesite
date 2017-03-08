@@ -37,7 +37,8 @@ const routes = [
         path: 'initfan',name: 'initfan', components: { a: message }, meta: { title: "设置地区" }
       },
       {
-        path: 'modifyadd',name: 'modifyadd', components: { a: addressform, b: addressbutton }, meta: { title: "添加地址" }
+       // path: 'modifyadd',name: 'modifyadd', components: { a: addressform, b: addressbutton }, meta: { title: "添加地址" }
+        path: 'modifyadd',name: 'modifyadd', components: { a: addressform }, meta: { title: "添加地址" }
       }
     ]
   }

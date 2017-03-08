@@ -4,6 +4,7 @@
     </div>
 </template>
 <script>
+    import config from '../../config/config'
     import { Msg } from 'vux'
     export default {
         components: {
