@@ -92,7 +92,7 @@ export default {
                 this.type=0;
                 this.showAlert("警告","请将信息填写完整！");
             }else{
-                this.axios.post(config.maddress,formdata)
+                this.axios.post(config.address,formdata)
                           .then((response)=>{
                               if(response.data._id){
                                   this.type=1;
