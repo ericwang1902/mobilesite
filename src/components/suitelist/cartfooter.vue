@@ -1,11 +1,12 @@
 <template>
        <div class="buy_cart_container">
+            <div class="countbas">{{$store.getters.getTotalCount}}</div>
             <div class="cart_icon">
                 <i class="fa fa-shopping-cart fa-2x"></i>
             </div>
             <div class="cart_amout">
                 <div class="cart_amount_note">
-                    ¥ 188.00
+                    ¥ {{$store.getters.getTotalAmount}}
                 </div>
             </div>
             <div class="goto_btn">
@@ -16,6 +17,13 @@
         </div>
 </template>
 <script>
+    export default {
+        data(){
+            return{
+           
+            }
+        }
+    }
 </script>
 <style lang="scss" scoped> 
 @import '../../assets/mixin';
@@ -23,8 +31,22 @@
        display: flex;
        flex-direction: row;
        height: 100%;
+       .countbas{
+            height: 1.5rem;
+            width: 1.5rem;
+            position: fixed;
+            bottom: 3rem;
+            left: 3rem;
+            border-radius: 50%;
+            z-index:1;
+            background-color:crimson;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:#fff;
+       }
        .cart_icon{
-           display: flex;
+            display: flex;
             justify-content: center;
             align-items: center;
             color:#fff;
