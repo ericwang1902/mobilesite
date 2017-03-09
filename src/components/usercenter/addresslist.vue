@@ -1,6 +1,6 @@
 <template>
     <div>
-         <scroller lock-x scrollbar-y height="-44px" ref="scroller">
+         <scroller lock-x scrollbar-y height="-3rem" ref="scroller">
             <div class="bck" >
                 <!--<p v-for="i in 60" v-if="showList1">placeholder {{ i + '' + i }}</p>-->
                 <checker v-model="selectaddress" class="ckcls" default-item-class="demo1-item" selected-item-class="demo1-item-selected">

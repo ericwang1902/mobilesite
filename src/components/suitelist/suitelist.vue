@@ -1,6 +1,6 @@
 <template>
     <div class="suitelist">
-        <scroller lock-x scrollbar-y height="-44px" ref="scroller">
+        <scroller lock-x scrollbar-y height="-3rem" ref="scroller">
         <div>
             <div v-for="item in suitelist">
                 <suiteitem :suiteInfo="item"></suiteitem>

@@ -49,7 +49,7 @@
     }
     
     .zhanwei {
-        flex: 0 0 44px;
+        flex: 0 0 3rem;
     }
     
     .WFooter {
@@ -57,7 +57,7 @@
         bottom: 0px;
         /* background-color: aqua;*/
         width: 100%;
-        height: 44px;
+        height: 3rem;
     }
     
     .router-fade-enter-active,

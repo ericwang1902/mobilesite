@@ -16,6 +16,7 @@ Vue.use(VueAxios, axios)
 import index from './pages/index'
 
 import suitelist from './components/suitelist/suitelist'
+import cartfooter from './components/suitelist/cartfooter'
 
 //初始化粉丝地址列表
 import message from './components/initfan/initmsg'
@@ -32,7 +33,7 @@ const routes = [
     component: index,
     children: [
       {
-        path: 'home',name: 'home', components: { a: suitelist }, meta: { title: "货架" }
+        path: 'home',name: 'home', components: { a: suitelist, b:cartfooter}, meta: { title: "货架" }
       },
       {
         path: 'initfan',name: 'initfan', components: { a: message }, meta: { title: "设置地区" }
