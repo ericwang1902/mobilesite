@@ -1,17 +1,23 @@
 <template>
     <div class="suitelist">
-        <div v-for="item in suitelist">
-            <suiteitem :suiteInfo="item"></suiteitem>
+        <scroller lock-x scrollbar-y height="-44px" ref="scroller">
+        <div>
+            <div v-for="item in suitelist">
+                <suiteitem :suiteInfo="item"></suiteitem>
+            </div>
         </div>
+        </scroller>
     </div>
 </template>
 <script>
     import config from '../../config/config'
     import suiteitem from './suiteitem'
+    import {Scroller} from 'vux'
 
     export default {
         components: {
-            suiteitem
+            suiteitem,
+            Scroller
         },
         data() {
             return {
@@ -24,9 +30,12 @@
         },
         methods: {
             getSuites: function () {
-                this.axios.get(config.suite+'?userid='+this.$route.query.userid).then((response) => {
+                this.axios.get(config.msuite+'?userid='+this.$route.query.userid).then((response) => {
                     this.suitelist = response.data;
                     console.log(this.suitelist);
+                    this.$nextTick(() => {
+                            this.$refs.scroller.reset({top: 0})
+                            })
                     
                 })
                     .catch(function (err) {
