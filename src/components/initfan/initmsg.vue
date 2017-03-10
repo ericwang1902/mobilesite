@@ -24,9 +24,7 @@
             }
         },
         created() {
-            var userid = this.$route.query.userid;//1.获取当前query串中的userid
-            this.$store.commit('setUserId', userid);//2.将userid存放在store中
-            console.log(this.$store.getters.getUserId)
+            
         },
         methods: {
             gotoAddAddress: function () {
