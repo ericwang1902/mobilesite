@@ -46,22 +46,29 @@
                     this.cartlist.push(val);
                 }else{
                     for(var i=0;i<this.cartlist.length;i++){
-                        if(this.cartlist[i].suite==val.suite){
+                        if(this.cartlist[i].suite._id==val.suite._id){
                             this.cartlist[i].amount = val.amount;
                             this.cartlist[i].count = val.count;
                         }
                     }
                 }
+
+                this.$store.commit('setCartList',this.cartlist);
+                
+                //计算总金额和总数量
                 var totalamount=0;
                 var totalcount=0;
                 for(var i=0;i<this.cartlist.length;i++){
                     totalamount+=this.cartlist[i].amount;
                     totalcount+=this.cartlist[i].count;
                 }
-                
+                //判断count为0,如果count为0，就删掉
+               
+
+
                 this.$store.commit('setTotalAmount',totalamount);
                 this.$store.commit('setTotalCount',totalcount);
-                console.log("总额："+JSON.stringify(this.cartlist));
+                console.log("购物车清单："+JSON.stringify(this.cartlist));
             }
         }
     }

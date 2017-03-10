@@ -7,11 +7,13 @@ Vue.use(Vuex)
 var userid = "";
 var totalamount = 0;
 var totalcount=0;
+var cartlist =[];
 
 const state = {
     userid: userid,//当前用户的id
     totalamount:totalamount,//购物车总金额
-    totalcount:totalcount//购物车总数量
+    totalcount:totalcount,//购物车总数量
+    cartlist:cartlist//购物车所有物品清单
 }
 
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
@@ -25,6 +27,9 @@ const mutations = {
     },
     setTotalCount:function(state,totalcount){
         state.totalcount = totalcount;
+    },
+    setCartList:function(state,cartlist){
+        state.cartlist = cartlist;
     }
 }
 
@@ -34,7 +39,9 @@ const getters = {
     //购物车总金额的getter函数
     getTotalAmount :state=>{return state.totalamount},
     //购物车总数量的getter函数
-    getTotalCount :state=>{return state.totalcount}
+    getTotalCount :state=>{return state.totalcount},
+    //购物车所有物品清单的getter函数
+    getCartList:state=>{return state.cartlist}
 
 }
 
