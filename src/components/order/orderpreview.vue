@@ -17,7 +17,7 @@
         },
         data() {
             return {
-                isshow:false,
+                isshow: false,
                 title: '',
                 content: '',
                 btns: [{
@@ -33,20 +33,47 @@
                     onButtonClick: () => {
                         console.log("支付");//后期接入支付
                         //支付成功后，创建客户订单
-
+                        this.postorder();
                     }
-                }]
+                }],
+                fansinfo:{},
+                orderdata: {
+                    ordernum: '',
+                    suitelist: [],//cart
+                    goodslist: [], //cart
+                    totalamount: 0,//cart
+                    taotalcount: 0,//cart
+                    paytype: 'wepay',//wechat
+                    paystate: 'paid',//1
+                    ordertime: Date.now,//post time
+                    paytime: Date.now,//=ordertime
+                    fanid: this.$store.getters.getUserId,//query fansid
+                    district: '',
+                    region: '',
+                    address: '',
+                    note: ''
+                }
             }
         },
-        created () {
+        created() {
             //根据store中的userid来 获取address、regionid、districtid
-            this.axios.get(config.fans+'/'+this.$store.getters.getUserId)
-                       .then((response)=>{
-                           console.log("fans info:"+JSON.stringify(response.data));
-                       })
-                       .catch(function(err){
-                            console.log(err);   
-                       })
+            this.axios.get(config.fans + '/' + this.$store.getters.getUserId)
+                .then((response) => {
+                    console.log("fans info:" + JSON.stringify(response.data));
+                    this.fansinfo = response.data;
+                    this.orderdata.district = this.fansinfo.district._id;
+                    this.orderdata.region = this.fansinfo.address.region;
+                    this.orderdata.address = this.fansinfo.address.detail+this.fansinfo.address.name+this.fansinfo.address.phone;
+                    this.orderdata.suitelist = this.$store.getters.getCartList;
+                    this.orderdata.taotalcount = this.$store.getters.getTotalCount;
+                    this.orderdata.totalamount = this.$store.getters.getTotalAmount;
+
+                    //计算goodslist提交给后台接口，便于后台接口进行goods分类汇总
+ 
+                })
+                .catch(function (err) {
+                    console.log(err);
+                })
         },
         computed: {
             itemlist: function () {
@@ -90,6 +117,15 @@
                 this.isshow = true;
                 this.title = "提示";
                 this.content = "重新选择将会清空当前订单"
+            },
+            postorder(){
+                this.axios.post(config.morder,this.orderdata)
+                          .then((response)=>{
+                              console.log(response.data)
+                          })
+                          .catch(function(err){
+                              console.log(err);
+                          })
             }
         }
     }

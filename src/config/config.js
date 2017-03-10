@@ -8,7 +8,8 @@ var config = {
     mregions:baseURL + "/sysmanage/mregion",//获取region的接口
     address:baseURL + "/sysmanage/address",//添加address接口
     maddress:baseURL + "/sysmanage/maddress",//获取本人的address的列表
-    fans:baseURL +"/sysmanage/fans"//更新fans接口
+    fans:baseURL +"/sysmanage/fans",//更新fans接口
+    morder:baseURL +"/sysmanage/order"//客户下单接口
 
 }
 
