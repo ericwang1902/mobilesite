@@ -15,8 +15,13 @@ Vue.use(VueAxios, axios)
 
 import index from './pages/index'
 
+//货架和购物车的组件
 import suitelist from './components/suitelist/suitelist'
 import cartfooter from './components/suitelist/cartfooter'
+
+//订单preview的组件
+import  orderpreview from './components/order/orderpreview'
+//import  orderbtn  from './components/order/orderbtn'
 
 //初始化粉丝地址列表
 import message from './components/initfan/initmsg'
@@ -24,6 +29,8 @@ import message from './components/initfan/initmsg'
 import addressform from './components/usercenter/addressform'//地址form
 import addresslist from './components/usercenter/addresslist'//地址列表
 import btntoadd from './components/usercenter/btntoadd'//地址列表底部的按钮
+
+
 
 Vue.use(VueRouter)
 
@@ -44,6 +51,9 @@ const routes = [
       },
       {
         path:'addlist',name:'addlist',components:{a:addresslist,b:btntoadd},meta:{title:"地址列表"}
+      },
+      {
+        path:'orderprepay',name:'orderprepay',components:{a:orderpreview},meta: { title:"订单预览" }
       }
     ]
   }

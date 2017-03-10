@@ -1,16 +1,16 @@
 <template>
-        <scroller  lock-x scrollbar-y height="-45px" ref="scroller">
+    <scroller lock-x scrollbar-y height="-45px" ref="scroller">
         <div>
             <div v-for="item in suitelist">
                 <suiteitem @suiteevent="getitemtocart" :suiteInfo="item"></suiteitem>
             </div>
         </div>
-        </scroller>
+    </scroller>
 </template>
 <script>
     import config from '../../config/config'
     import suiteitem from './suiteitem'
-    import {Scroller} from 'vux'
+    import { Scroller } from 'vux'
 
     export default {
         components: {
@@ -20,7 +20,7 @@
         data() {
             return {
                 suitelist: [],
-                cartlist:[]
+                cartlist: []
             }
         },
         created() {
@@ -29,52 +29,57 @@
         },
         methods: {
             getSuites: function () {
-                this.axios.get(config.msuite+'?userid='+this.$route.query.userid).then((response) => {
+                this.axios.get(config.msuite + '?userid=' + this.$route.query.userid).then((response) => {
                     this.suitelist = response.data;
+
                     console.log(this.suitelist);
                     this.$nextTick(() => {
-                            this.$refs.scroller.reset({top: 0})
-                            })
-                    
+                        this.$refs.scroller.reset({ top: 0 })
+                    })
                 })
                     .catch(function (err) {
                         console.log(err)
                     })
             },
-            getitemtocart:function(val){
-                if(!this.cartlist.find(d=>d.suite._id==val.suite._id)){
+            getitemtocart: function (val) {
+                if (!this.cartlist.find(d => d.suite._id == val.suite._id)) {
                     this.cartlist.push(val);
-                }else{
-                    for(var i=0;i<this.cartlist.length;i++){
-                        if(this.cartlist[i].suite._id==val.suite._id){
+                } else {
+                    for (var i = 0; i < this.cartlist.length; i++) {
+                        if (this.cartlist[i].suite._id == val.suite._id) {
                             this.cartlist[i].amount = val.amount;
                             this.cartlist[i].count = val.count;
                         }
                     }
                 }
 
-                this.$store.commit('setCartList',this.cartlist);
-                
+
                 //计算总金额和总数量
-                var totalamount=0;
-                var totalcount=0;
-                for(var i=0;i<this.cartlist.length;i++){
-                    totalamount+=this.cartlist[i].amount;
-                    totalcount+=this.cartlist[i].count;
+                var totalamount = 0;
+                var totalcount = 0;
+                for (var i = 0; i < this.cartlist.length; i++) {
+                    totalamount += this.cartlist[i].amount;
+                    totalcount += this.cartlist[i].count;
                 }
                 //判断count为0,如果count为0，就删掉
-               
+                var cartlisttemp = [];
+                for (var i = 0; i < this.cartlist.length; i++) {
+                    if (this.cartlist[i].count !== 0) {
+                        cartlisttemp.push(this.cartlist[i]);
+                    }
+                }
+                this.$store.commit('setCartList', cartlisttemp);
+                console.log("购物车清单：" + JSON.stringify(cartlisttemp));
+                this.$store.commit('setTotalAmount', totalamount);
+                this.$store.commit('setTotalCount', totalcount);
 
-
-                this.$store.commit('setTotalAmount',totalamount);
-                this.$store.commit('setTotalCount',totalcount);
-                console.log("购物车清单："+JSON.stringify(this.cartlist));
             }
         }
     }
+
 </script>
 <style>
-  .suitescontent {
+    .suitescontent {
         width: 100%;
         background-color: #FBF9FE;
         position: fixed;

@@ -9,8 +9,8 @@
                     ¥ {{$store.getters.getTotalAmount}}
                 </div>
             </div>
-            <div class="goto_btn">
-                <div class="btntitle">
+            <div class="goto_btn" @click="toOrderPreview()">
+                <div class="btntitle" >
                     去结算
                 </div>
             </div>
@@ -21,6 +21,11 @@
         data(){
             return{
            
+            }
+        },
+        methods: {
+            toOrderPreview(){
+                this.$router.push({name:'orderprepay'});
             }
         }
     }
@@ -60,7 +65,7 @@
             width: 3rem;
        }
        .cart_amout{
-           background-color:bisque;
+           background-color:#FBF9FE;
            flex: 1 1 auto;
            background-color: #444;
            display: flex;
