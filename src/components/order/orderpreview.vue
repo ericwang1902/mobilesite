@@ -67,9 +67,11 @@
                     this.orderdata.suitelist = this.$store.getters.getCartList;
                     this.orderdata.taotalcount = this.$store.getters.getTotalCount;
                     this.orderdata.totalamount = this.$store.getters.getTotalAmount;
-
+                    this.orderdata.ordertime = Date.now();
+                    this.orderdata.paytime = Date.now();
+                    
                     //计算goodslist提交给后台接口，便于后台接口进行goods分类汇总
- 
+                    
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -121,7 +123,8 @@
             postorder(){
                 this.axios.post(config.morder,this.orderdata)
                           .then((response)=>{
-                              console.log(response.data)
+                              console.log(response.data);
+                              this.$router.push({name:"orderlist"});//跳转到订单列表
                           })
                           .catch(function(err){
                               console.log(err);

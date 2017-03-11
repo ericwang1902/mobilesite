@@ -9,7 +9,8 @@ var config = {
     address:baseURL + "/sysmanage/address",//添加address接口
     maddress:baseURL + "/sysmanage/maddress",//获取本人的address的列表
     fans:baseURL +"/sysmanage/fans",//更新fans接口
-    morder:baseURL +"/sysmanage/order"//客户下单接口
+    morder:baseURL +"/sysmanage/order",//客户下单接口
+    morderlist :baseURL +"/sysmanage/morder"//粉丝获取其订单列表的接口
 
 }
 

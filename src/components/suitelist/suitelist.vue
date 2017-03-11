@@ -29,7 +29,7 @@
         },
         methods: {
             getSuites: function () {
-                this.axios.get(config.msuite + '?userid=' + this.$route.query.userid).then((response) => {
+                this.axios.get(config.msuite + '?userid=' + this.$store.getters.getUserId).then((response) => {
                     this.suitelist = response.data;
 
                     console.log(this.suitelist);
