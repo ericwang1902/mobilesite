@@ -12,13 +12,18 @@ var cartlist =[];
 var regionid ='';
 var districtid ='';
 
+var xdialogshow = false;
+var suiteinfo = {};
+
 const state = {
     userid: userid,//当前粉丝的id
     totalamount:totalamount,//购物车总金额
     totalcount:totalcount,//购物车总数量
     cartlist:cartlist,//购物车所有物品清单
     regionid:regionid,//配送商圈id
-    districtid:districtid//区县id
+    districtid:districtid,//区县id
+    xdialogshow:xdialogshow,//xdialog显示选项
+    suiteinfo:suiteinfo//dialog suiteinfo
 }
 
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
@@ -41,6 +46,12 @@ const mutations = {
     },
     setDistrictId:function(state,districtid){
         state.districtid = districtid;
+    },
+    setXdialogShow:function(state,xdialogshow){
+        state.xdialogshow = xdialogshow;
+    },
+    setsuiteinfo:function(state,suiteinfo){
+        state.suiteinfo = suiteinfo;
     }
 }
 
@@ -56,7 +67,11 @@ const getters = {
     //配送商圈id
     getRegionId:state=>{return state.regionid},
     //区县id
-    getDistrictId:State=>{return state.districtid}
+    getDistrictId:state=>{return state.districtid},
+    //xdialogshow
+    getXdialogShow:state=>{return state.xdialogshow},
+    //getsuiteinfo
+    getsuiteinfo:state=>{return  state.suiteinfo}
 
 }
 
