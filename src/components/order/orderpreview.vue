@@ -68,8 +68,10 @@
                     this.orderdata.taotalcount = this.$store.getters.getTotalCount;
                     this.orderdata.totalamount = this.$store.getters.getTotalAmount;
                     this.orderdata.ordertime = Date.now();
+                    
                     this.orderdata.paytime = Date.now();
                     
+
                     //计算goodslist提交给后台接口，便于后台接口进行goods分类汇总
                     
                 })
