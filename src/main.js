@@ -30,6 +30,9 @@ import addressform from './components/usercenter/addressform'//地址form
 import addresslist from './components/usercenter/addresslist'//地址列表
 import btntoadd from './components/usercenter/btntoadd'//地址列表底部的按钮
 
+//用户绑定
+import userbind from './userbind/userbind'
+
 
 
 Vue.use(VueRouter)
@@ -57,6 +60,8 @@ const routes = [
       },
       {
         path:'orderlist',name:'orderlist',components:{a:orderlist},meta:{title:"订单列表"}
+      },{
+        path:'userbind',name:'userbind',components:{a:userbind},meta: { title:"用户绑定" }
       }
     ]
   }
