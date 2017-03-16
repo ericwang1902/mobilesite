@@ -31,7 +31,11 @@ import addresslist from './components/usercenter/addresslist'//地址列表
 import btntoadd from './components/usercenter/btntoadd'//地址列表底部的按钮
 
 //用户绑定
-import userbind from './userbind/userbind'
+import userbind from './user/userbind/userbind'
+import admin from './user/admin/admin'
+import courier from  './user/courier/courier'
+import shopowner from './user/shopowner/shopowner'
+import agent from './user/agent/agent'
 
 
 
@@ -62,7 +66,20 @@ const routes = [
         path:'orderlist',name:'orderlist',components:{a:orderlist},meta:{title:"订单列表"}
       },{
         path:'userbind',name:'userbind',components:{a:userbind},meta: { title:"用户绑定" }
+      },
+      {
+        path:'admin',name:'admin',components:{a:admin},meta: { title:"管理员" }
+      },
+      {
+        path:'courier',name:'courier',components:{a:courier},meta: { title:"配送员" }
+      },
+      {
+        path:'shopowner',name:'shopowner',components:{a:shopowner},meta: { title:"店主" }
+      },
+      {
+        path:'agent',name:'agent',components:{a:agent},meta: { title:"区域代理" }
       }
+      
     ]
   }
 ]

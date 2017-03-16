@@ -15,6 +15,8 @@ var districtid ='';
 var xdialogshow = false;
 var suiteinfo = {};
 
+var  userinfo ={};//配送员、店员、管理员的后台用户信息
+
 const state = {
     userid: userid,//当前粉丝的id
     totalamount:totalamount,//购物车总金额
@@ -23,7 +25,8 @@ const state = {
     regionid:regionid,//配送商圈id
     districtid:districtid,//区县id
     xdialogshow:xdialogshow,//xdialog显示选项
-    suiteinfo:suiteinfo//dialog suiteinfo
+    suiteinfo:suiteinfo,//dialog suiteinfo
+    userinfo:userinfo//用户信息
 }
 
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
@@ -52,6 +55,9 @@ const mutations = {
     },
     setsuiteinfo:function(state,suiteinfo){
         state.suiteinfo = suiteinfo;
+    },
+    setUserinfo:function(state,userinfo){
+        state.userinfo = userinfo;
     }
 }
 
@@ -71,7 +77,9 @@ const getters = {
     //xdialogshow
     getXdialogShow:state=>{return state.xdialogshow},
     //getsuiteinfo
-    getsuiteinfo:state=>{return  state.suiteinfo}
+    getsuiteinfo:state=>{return  state.suiteinfo},
+    //getuserinfo
+    getuserinfo :state=>{return state.userinfo}
 
 }
 
