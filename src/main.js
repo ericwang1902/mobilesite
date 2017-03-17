@@ -64,7 +64,8 @@ const routes = [
       },
       {
         path:'orderlist',name:'orderlist',components:{a:orderlist},meta:{title:"订单列表"}
-      },{
+      },
+      {
         path:'userbind',name:'userbind',components:{a:userbind},meta: { title:"用户绑定" }
       },
       {
