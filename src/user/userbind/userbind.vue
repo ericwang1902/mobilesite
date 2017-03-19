@@ -61,22 +61,21 @@
                                 //跳转到admin
                                 if(userinfo.role[0].roleName=='ADMIN'){
                                     
-                                    this.$router.push({name:"admin"})
+                                    this.$router.push({name:"admin",query: { openid: userinfo.openid }})
                                 }
                                 //跳转到配送员页面
                                 if(userinfo.role[0].roleName=='COURIER'){
                                     
-                                    this.$router.push({name:"courier"})
+                                    this.$router.push({name:"courier" ,query: { openid: userinfo.openid }})
                                 }
                                 //跳转到配送员页面
-                                if(userinfo.role[0].roleName=='SHOPPER'){
-                                    
-                                    this.$router.push({name:"shopowner"})
+                                if(userinfo.role[0].roleName=='SHOPPER'){   
+                                    this.$router.push({name:"shopowner", query: { openid: userinfo.openid }})
                                 }
                                 //跳转到区域代理页面
                                 if(userinfo.role[0].roleName=='AGENT'){
                                     
-                                    this.$router.push({name:"agent"})
+                                    this.$router.push({name:"agent",query: { openid: userinfo.openid }})
                                 }
                             }
                             console.log("user bind:" + JSON.stringify(response.data));

@@ -10,10 +10,12 @@ var config = {
     maddress:baseURL + "/sysmanage/maddress",//获取本人的address的列表
     fans:baseURL +"/sysmanage/fans",//更新fans接口
     morder:baseURL +"/sysmanage/order",//客户下单接口
-    morderlist :baseURL +"/sysmanage/morder",//粉丝获取其订单列表的接口
+    morderlist :baseURL +"/sysmanage/morder/fan",//粉丝获取其订单列表的接口
+    morderlistagent :baseURL +"/sysmanage/morder/agent",//代理获取订单列表的接口，根据后面是否拼接delivered
 
 
-    muserbind :baseURL +"/mobile/userbind"//店主、配送员、管理员的微信绑定
+    muserbind :baseURL +"/mobile/userbind",//店主、配送员、管理员的微信绑定
+    muser:baseURL +"/sysmanage/muser"//根据openid去获取用户信息
 }
 
 export default  config;
