@@ -5,18 +5,18 @@
             <tab-item @on-item-click="handler(2)">未下发订单</tab-item>
             <tab-item @on-item-click="handler(3)">全部订单</tab-item>
         </tab>
-        <div style="height: 100%;width: 100%">
+       
             <scroller lock-x scrollbar-y height="-45px" ref="scroller">
                 <div>
-                    <div v-for="item in orderlist">
-                        <div style="border: .025rem solid #f5f5f5">
+                    <div v-for="item in orderlist" >
+                        <div  style="border: .025rem solid #f5f5f5">
                             <div>{{item.ordernum}}</div>
                             <div>{{item.address}}</div>
                         </div>
                     </div>
                 </div>
             </scroller>
-        </div>
+        
     </div>
 </template>
 <script>

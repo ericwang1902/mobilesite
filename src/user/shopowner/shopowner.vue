@@ -5,18 +5,17 @@
             <tab-item @on-item-click="handler(2)">已取件订单</tab-item>
             <tab-item @on-item-click="handler(3)">全部订单</tab-item>
         </tab>
-        <div style="height: 100%;width: 100%">
-            <scroller lock-x scrollbar-y height="-45px" ref="scroller">
-                <div>
-                    <!--<div v-for="item in orderlist">
-                        <div style="border: .025rem solid #f5f5f5">
-                            <div>{{item.ordernum}}</div>
-                            <div>{{item.address}}</div>
-                        </div>
-                    </div>-->
+
+        <scroller lock-x scrollbar-y height="-45px" ref="scroller">
+            <div>
+                <div v-for="item in orderlist" v-if="item.ficorder.ficorderstate ==='1'">
+                    <div style="border: .025rem solid #f5f5f5">
+                        <div>{{item.ordernum}}</div>
+                    </div>
                 </div>
-            </scroller>
-        </div>
+            </div>
+        </scroller>
+
     </div>
 </template>
 <script>
@@ -27,16 +26,16 @@
         components: {
             Tab, TabItem, Scroller
         },
-        data () {
+        data() {
             return {
                 openid: '',//query中的openid
                 userinfo: {},//根据openid去获取到的user数据
-                orderlist: []    
+                orderlist: []
             }
         },
-        created () {
+        created() {
             this.openid = this.$route.query.openid;
-            this.getuserinfo(); 
+            this.getuserinfo();
         },
         methods: {
             //获取用户信息
@@ -51,17 +50,21 @@
                         console.log(err);
                     })
             },
-            getUngetshoporder:function(){
-                this.axios.get(config.mshoporderlistsupplier+"?supplieruserid="+this.userinfo._id)
-                        .then((response)=>{
-                            console.log(response.data);
+            getUngetshoporder: function () {
+                this.axios.get(config.mshoporderlistsupplier + "?supplieruserid=" + this.userinfo._id)
+                    .then((response) => {
+                        this.orderlist = response.data;
+                        console.log(response.data);
+                        this.$nextTick(() => {
+                            this.$refs.scroller.reset({ top: 0 })
                         })
-                        .catch(function(err){
-                            console.log(err);
-                        })
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                    })
             },
             //tab响应函数
-            handler(val){
+            handler(val) {
 
             }
         }
