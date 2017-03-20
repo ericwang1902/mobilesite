@@ -41,6 +41,7 @@ import agent from './user/agent/agent'
 
 Vue.use(VueRouter)
 
+
 const routes = [
   {
     path: '/',
@@ -88,6 +89,17 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+// router.beforeEach((to, from, next) => {
+//   console.log(to)
+//   document.title = to.meta.title
+//   next()
+// })
+
+// router.afterEach(route => {
+//   document.title = route.meta.title
+// })
+
 
 FastClick.attach(document.body)
 

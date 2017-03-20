@@ -12,7 +12,7 @@ var config = {
     morder:baseURL +"/sysmanage/order",//客户下单接口
     morderlist :baseURL +"/sysmanage/morder/fan",//粉丝获取其订单列表的接口
     morderlistagent :baseURL +"/sysmanage/morder/agent",//代理获取订单列表的接口，根据后面是否拼接delivered
-
+    mshoporderlistsupplier:baseURL +"/sysmanage/mshoporder/supplier",//根据店主的id来获取店铺订单
 
     muserbind :baseURL +"/mobile/userbind",//店主、配送员、管理员的微信绑定
     muser:baseURL +"/sysmanage/muser"//根据openid去获取用户信息
