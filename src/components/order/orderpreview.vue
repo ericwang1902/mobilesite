@@ -125,6 +125,12 @@
             postorder(){
                 this.axios.post(config.morder,this.orderdata)
                           .then((response)=>{
+                              var resultobj = response.data;
+                              //获取订单编号，prepayid，paysign，用作给微信jssdk发起支付
+                              var order = resultobj.order;
+                              var prepayid = resultobj.paySign;
+                              var paySign = resultobj.paySign;
+
                               console.log(response.data);
                               this.$router.push({name:"orderlist"});//跳转到订单列表
                           })
