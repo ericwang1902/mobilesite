@@ -24,6 +24,7 @@
 <script>
     import topDiv from "../components/layout/topDiv";
     import { XDialog } from 'vux';
+    import weixinjs from '../common/jweixin-1.2.0';
 
     export default {
         components: {
