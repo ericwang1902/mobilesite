@@ -15,7 +15,10 @@ var config = {
     mshoporderlistsupplier:baseURL +"/sysmanage/mshoporder/supplier",//根据店主的id来获取店铺订单
 
     muserbind :baseURL +"/mobile/userbind",//店主、配送员、管理员的微信绑定
-    muser:baseURL +"/sysmanage/muser"//根据openid去获取用户信息
+    muser:baseURL +"/sysmanage/muser",//根据openid去获取用户信息
+
+    mwxjsapiticketurl:baseURL+"/mobile/jsapiticket"//获取微信的jsapiticket的网址
+
 }
 
 export default  config;
