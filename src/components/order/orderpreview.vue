@@ -140,7 +140,7 @@ export default {
                     wx.chooseWXPay({
                         timestamp: resultobj.timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
                         nonceStr: resultobj.noncestr, // 支付签名随机串，不长于 32 位
-                        package: resultobj.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+                        package: "prepay_id="+resultobj.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
                         signType: resultobj.sintype, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
                         paySign: resultobj.paysign, // 支付签名
                         success: function (res) {
