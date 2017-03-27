@@ -10,6 +10,7 @@
                 </div>
                 <div class="ordernum">
                     <p><span style="font-size: 1rem;margin-right: 0.5rem">¥</span><span>{{item.totalamount}}</span></p>
+                    <p><span style="font-size: 1rem;margin-right: 0.5rem">状态：</span><span>{{getstate(item.ficorder)}}</span></p>
                 </div>
             </div>
         </div>
@@ -26,14 +27,31 @@
         methods: {
             ordertimefunc(val) {
                 return new Date(val).toLocaleDateString() + new Date(val).toLocaleTimeString();
+            },
+            getstate(ficorder){
+                if(!ficorder){
+                    return "您已成功下单，等待商家接单";
+                }else{
+                    if(ficorder.ficorderstate=='1'){
+                        return "商家已接单，等待配送"
+                    }
+                }
             }
         },
         components: {
         },
         created() {
-            this.axios.get(config.morderlist + '?fansid=' + this.$store.getters.getUserId)
+         
+            var fansid = '';
+            if(this.$route.query.fansid){
+                fansid = this.$route.query.fansid;
+            }
+            else{
+                fansid = this.$store.getters.getUserId;
+            }
+            console.log(fansid)
+            this.axios.get(config.morderlist + '?fansid=' + fansid)
                 .then((response) => {
-                    console.log("根据fansid获取order：" + this.$store.getters.getUserId)
                     console.log(response.data);
                     this.orderlist = response.data;
                 })
