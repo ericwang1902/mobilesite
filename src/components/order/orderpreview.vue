@@ -72,7 +72,8 @@ export default {
                 this.fansinfo = response.data;
                 this.orderdata.district = this.fansinfo.district._id;
                 this.orderdata.region = this.fansinfo.address.region;
-                this.orderdata.address = this.fansinfo.address.detail + this.fansinfo.address.name + this.fansinfo.address.phone;
+                this.orderdata.address = this.fansinfo.address.detail + this.fansinfo.address.name ;
+                this.orderdata.mobile = this.fansinfo.address.phone;
                 this.orderdata.suitelist = this.$store.getters.getCartList;
                 this.orderdata.taotalcount = this.$store.getters.getTotalCount;
                 this.orderdata.totalamount = this.$store.getters.getTotalAmount;
