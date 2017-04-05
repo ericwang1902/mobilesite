@@ -60,7 +60,8 @@ export default {
                 district: '',
                 region: '',
                 address: '',
-                note: ''
+                note: '',
+                mobile:''
             }
         }
     },
