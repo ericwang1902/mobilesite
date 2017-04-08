@@ -7,7 +7,7 @@
         <scroller lock-x scrollbar-y height="-45px" ref="scroller">
             <div>
                 <div v-for="item in ficorderlist">
-                    <div style="border: .025rem solid #f5f5f5" @click="onficclick">
+                    <div style="border: .025rem solid #f5f5f5" @click="onficclick(item)">
                         <div>{{item.ficordernum}}</div>
                         <div>{{getstate(item)}}</div>
                     </div>
@@ -88,8 +88,8 @@
                 }
             },
             onficclick(){
-                
-                console.log("11");
+
+                console.log(item);
             }
         }
     }
