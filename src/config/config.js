@@ -16,6 +16,7 @@ var config = {
 
     muserbind :baseURL +"/mobile/userbind",//店主、配送员、管理员的微信绑定
     muser:baseURL +"/sysmanage/muser",//根据openid去获取用户信息
+    mficorder:baseURL +"/sysmanage/mficorder/ficorderbyregion",//根据regionid去获取ficorder
 
     mwxjsapiticketurl:baseURL+"/mobile/jsapiticket"//获取微信的jsapiticket的网址
 
