@@ -88,6 +88,7 @@
                 }
             },
             onficclick(){
+                
                 console.log("11");
             }
         }
