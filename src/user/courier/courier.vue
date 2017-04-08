@@ -27,7 +27,8 @@
             return {
                 ficorderlist: [],
                 regionid: '',
-                openid: ''
+                openid: '',
+                ficorderstate:1
             }
         },
         components: {
@@ -38,6 +39,7 @@
             this.regionid = this.$route.query.regionid;
             this.openid = this.$route.query.openid;
             this.getficorderbyregion();
+            
         },
         methods: {
             getstate(ficorder) {
@@ -63,7 +65,9 @@
             },
             //根据regionid获取ficorder
             getficorderbyregion() {
-                this.axios.get(config.mficorder + "?openid=" + this.openid + "&regionid=" + this.regionid)
+                this.axios.get(config.mficorder + "?openid=" + this.openid + 
+                                                  "&regionid=" + this.regionid+
+                                                  "&ficorderstate="+this.ficorderstate)
                     .then((response) => {
                         this.ficorderlist = response.data;
 
@@ -75,21 +79,24 @@
             handler(val) {
                 switch (val) {
                     case 1:
-
                         console.log(1)
+                        this.ficorderstate=1;
+                        this.getficorderbyregion();
                         break;
                     case 2:
-
                         console.log(2)
+                        this.ficorderstate=2;
+                        this.getficorderbyregion();
                         break;
                     default:
                         break;
 
                 }
             },
-            onficclick(){
+            onficclick(item){
 
                 console.log(item);
+                this.$router.push({name:"courierdetail"});
             }
         }
     }

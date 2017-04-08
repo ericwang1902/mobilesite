@@ -36,6 +36,7 @@ import admin from './user/admin/admin'
 import courier from  './user/courier/courier'
 import shopowner from './user/shopowner/shopowner'
 import agent from './user/agent/agent'
+import courierdetail from './user/courier/courierdetail'
 
 
 
@@ -80,6 +81,9 @@ const routes = [
       },
       {
         path:'agent',name:'agent',components:{a:agent},meta: { title:"区域代理" }
+      },
+      {
+        path:'courierdetail',name:'courierdetail',component:{a:courierdetail},meta:{title:"配送员详情"}
       }
       
     ]
