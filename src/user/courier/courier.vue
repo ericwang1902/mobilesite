@@ -94,9 +94,8 @@
                 }
             },
             onficclick(item){
-
                 console.log(item);
-                this.$router.push({name:"courierdetail"});
+                this.$router.push({name:'courierdetail'});
             }
         }
     }

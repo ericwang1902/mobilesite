@@ -1,6 +1,6 @@
 <template>
     <div>
-        虚拟订单详情
+        <h1>虚拟订单详情</h1>
     </div>
 </template>
 <script>
