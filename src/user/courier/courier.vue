@@ -70,6 +70,7 @@
                                                   "&ficorderstate="+this.ficorderstate)
                     .then((response) => {
                         this.ficorderlist = response.data;
+                          this.$refs.scroller.reset({ top: 0 })
 
                     })
                     .catch(function (err) {
@@ -95,7 +96,7 @@
             },
             onficclick(item){
                 console.log(item);
-                this.$router.push({name:'courierdetail'});
+                 this.$router.push({name:"courierdetail" ,query: { ficid: item._id}});
             }
         }
     }
