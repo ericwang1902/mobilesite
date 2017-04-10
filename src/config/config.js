@@ -11,6 +11,7 @@ var config = {
     fans:baseURL +"/sysmanage/fans",//更新fans接口
     morder:baseURL +"/sysmanage/order",//客户下单接口
     morderbyficid:baseURL+"/sysmanage/morder/orderbyficorder",//根据ficorderid获取用户订单
+    mshoporderbyficid:baseURL+"/sysmanage/mshoporder/orderbyficorder",//根据ficorderid获取商户订单
     morderlist :baseURL +"/sysmanage/morder/fan",//粉丝获取其订单列表的接口
     morderlistagent :baseURL +"/sysmanage/morder/agent",//代理获取订单列表的接口，根据后面是否拼接delivered
     mshoporderlistsupplier:baseURL +"/sysmanage/mshoporder/supplier",//根据店主的id来获取店铺订单
@@ -18,7 +19,7 @@ var config = {
     muserbind :baseURL +"/mobile/userbind",//店主、配送员、管理员的微信绑定
     muser:baseURL +"/sysmanage/muser",//根据openid去获取用户信息
     mficorder:baseURL +"/sysmanage/mficorder/ficorderbyregion",//根据regionid去获取ficorder
-    
+    mficorderupdate:baseURL+'/sysmanage/mficorder/ficorderstate',//跟新ficorder的状态
     mwxjsapiticketurl:baseURL+"/mobile/jsapiticket"//获取微信的jsapiticket的网址
 
 }

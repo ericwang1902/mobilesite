@@ -6,80 +6,100 @@ Vue.use(Vuex)
 
 var userid = "";
 var totalamount = 0;
-var totalcount=0;
+var totalcount = 0;
 //order info
-var cartlist =[];
-var regionid ='';
-var districtid ='';
+var cartlist = [];
+var regionid = '';
+var districtid = '';
 
 var xdialogshow = false;
 var suiteinfo = {};
 
-var  userinfo ={};//配送员、店员、管理员的后台用户信息
+var userinfo = {};//配送员、店员、管理员的后台用户信息
+//配送员微信界面的按钮类型
+var btntype = 0;//0是表示商家订单提交，1是表示用户订单提交
 
+var ticksign = 2;//0是表示商家订单提交，1是表示用户订单提交,刷新标志
+
+
+
+//三大件之一：state
 const state = {
     userid: userid,//当前粉丝的id
-    totalamount:totalamount,//购物车总金额
-    totalcount:totalcount,//购物车总数量
-    cartlist:cartlist,//购物车所有物品清单
-    regionid:regionid,//配送商圈id
-    districtid:districtid,//区县id
-    xdialogshow:xdialogshow,//xdialog显示选项
-    suiteinfo:suiteinfo,//dialog suiteinfo
-    userinfo:userinfo//用户信息
+    totalamount: totalamount,//购物车总金额
+    totalcount: totalcount,//购物车总数量
+    cartlist: cartlist,//购物车所有物品清单
+    regionid: regionid,//配送商圈id
+    districtid: districtid,//区县id
+    xdialogshow: xdialogshow,//xdialog显示选项
+    suiteinfo: suiteinfo,//dialog suiteinfo
+    userinfo: userinfo,//用户信息
+    btntype: btntype,
+    ticksign: ticksign
 }
 
-// 创建一个对象存储一系列我们接下来要写的 mutation 函数
+
+// 三大件之二：创建一个对象存储一系列我们接下来要写的 mutation 函数
 const mutations = {
     // TODO: 放置我们的状态变更函数
     setUserId: function (state, userid) {
         state.userid = userid;
     },
-    setTotalAmount:function(state,totalamount){
+    setTotalAmount: function (state, totalamount) {
         state.totalamount = totalamount
     },
-    setTotalCount:function(state,totalcount){
+    setTotalCount: function (state, totalcount) {
         state.totalcount = totalcount;
     },
-    setCartList:function(state,cartlist){
+    setCartList: function (state, cartlist) {
         state.cartlist = cartlist;
     },
-    setRegionId:function(state,regionid){
+    setRegionId: function (state, regionid) {
         state.regionid = regionid;
     },
-    setDistrictId:function(state,districtid){
+    setDistrictId: function (state, districtid) {
         state.districtid = districtid;
     },
-    setXdialogShow:function(state,xdialogshow){
+    setXdialogShow: function (state, xdialogshow) {
         state.xdialogshow = xdialogshow;
     },
-    setsuiteinfo:function(state,suiteinfo){
+    setsuiteinfo: function (state, suiteinfo) {
         state.suiteinfo = suiteinfo;
     },
-    setUserinfo:function(state,userinfo){
+    setUserinfo: function (state, userinfo) {
         state.userinfo = userinfo;
+    },
+    setBtntype: function (state, btntype) {
+        state.btntype = btntype;
+    },
+    setTicksign: function (state, ticksign) {
+        state.ticksign = ticksign;
     }
 }
-
+//三大件之三：getters
 const getters = {
     //用户id的getter函数
     getUserId: state => { return state.userid },
     //购物车总金额的getter函数
-    getTotalAmount :state=>{return state.totalamount},
+    getTotalAmount: state => { return state.totalamount },
     //购物车总数量的getter函数
-    getTotalCount :state=>{return state.totalcount},
+    getTotalCount: state => { return state.totalcount },
     //购物车所有物品清单的getter函数
-    getCartList:state=>{return state.cartlist},
+    getCartList: state => { return state.cartlist },
     //配送商圈id
-    getRegionId:state=>{return state.regionid},
+    getRegionId: state => { return state.regionid },
     //区县id
-    getDistrictId:state=>{return state.districtid},
+    getDistrictId: state => { return state.districtid },
     //xdialogshow
-    getXdialogShow:state=>{return state.xdialogshow},
+    getXdialogShow: state => { return state.xdialogshow },
     //getsuiteinfo
-    getsuiteinfo:state=>{return  state.suiteinfo},
+    getsuiteinfo: state => { return state.suiteinfo },
     //getuserinfo
-    getuserinfo :state=>{return state.userinfo}
+    getuserinfo: state => { return state.userinfo },
+    //getbtntype
+    getBtntype: state => { return state.btntype },
+    //getticksign
+    getTicksign: state => { return state.ticksign }
 
 }
 
