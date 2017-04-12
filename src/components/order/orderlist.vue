@@ -33,7 +33,13 @@
                     return "您已成功下单，等待商家接单";
                 }else{
                     if(ficorder.ficorderstate=='1'){
-                        return "商家已接单，等待配送"
+                        return "商家已接单，等待配送员取件"
+                    }
+                    if(ficorder.ficorderstate=='2'){
+                        return "配送员已取件，配送中"
+                    }
+                    if(ficorder.ficorderstate=='3'){
+                        return "已送达"
                     }
                 }
             }
