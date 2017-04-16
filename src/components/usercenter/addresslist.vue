@@ -106,6 +106,7 @@
 <style>
 .bck{
     background-color:white;
+    margin-top: 5px;
 }
 .demo1-item {
     border-bottom: .025rem solid #f5f5f5;
@@ -118,6 +119,7 @@
 .ckcls{
     display: flex;
     flex-direction: column;
+    margin-top: 3px;
 }
 .aditem{
     display: flex;

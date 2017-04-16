@@ -31,7 +31,7 @@
             getSuites: function () {
                 this.axios.get(config.msuite + '?userid=' + this.$store.getters.getUserId).then((response) => {
                     this.suitelist = response.data;
-
+                    console.log("dsfsd");
                     console.log(this.suitelist);
                     this.$nextTick(() => {
                         this.$refs.scroller.reset({ top: 0 })

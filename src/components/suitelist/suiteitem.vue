@@ -1,27 +1,34 @@
 <template>
-    <div :style="suiteCls" @click="itemClick()">
+    <div :style="suiteCls" >
 
         <div class="suiteClsBottom">
             <div class="goodstr">{{suiteInfo.suitedes}}</div>
             <div class="suiterow">
 
-                <p><span class="suitefont">{{suiteInfo.suitename}}</span><span class="suiteprice">¥ {{suiteInfo.suiteprice}}</span></p>
-                <div class="zhanwei">
+                <div class="suiteinfo">
+                    
+                    <span class="suitefont">{{suiteInfo.suitename}}</span>
+                    <i @click="itemClick()" class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="suiteprice">¥ {{suiteInfo.suiteprice}} </span>
+                    <span class="suiteshowprice">原价¥{{suiteInfo.suiteshowprice}}</span>
                 </div>
+
                 <div class="addbtn">
                     <i @click.stop="movefromcart()" class="fa fa-minus-circle fa-2x" style="margin-right:0.5rem" aria-hidden="true"></i>
                     <p style="color:#fff">{{count}}</p>
                     <i @click.stop="addtocart()" class="fa fa-plus-circle fa-2x" style="margin-left:0.5rem" aria-hidden="true"></i>
                 </div>
+
+
             </div>
         </div>
-        
+
 
     </div>
 </template>
 <script>
     import { XButton } from 'vux'
-    
+
     export default {
 
         props: ['suiteInfo'],
@@ -72,9 +79,9 @@
         },
         methods: {
             itemClick() {
-                console.log("ddd");
+                console.log("ddd："+JSON.stringify(this.suiteInfo));
                 this.$store.commit('setXdialogShow', true);
-                this.$store.commit('setsuiteinfo',this.suiteInfo)
+                this.$store.commit('setsuiteinfo', this.suiteInfo)
 
             },
             addtocart() {
@@ -99,7 +106,7 @@
         justify-content: flex-start;
         padding-left: 1rem;
         padding-bottom: 0.5rem;
-        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 1));
+        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
         .goodstr {
             margin-top: 0.4rem;
             color: #fff;
@@ -114,7 +121,25 @@
         .suiterow {
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
             color: #fff;
+            .suiteinfo {
+                display: flex;
+                align-items: center;
+            }
+            .zhanwei {
+                flex: 1 0 auto;
+            }
+            .addbtn {
+                /*padding-top: 1rem;*/
+                padding-right: 1rem;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                color: #1AAD19;
+            }
         }
         .suiteprice {
             color: #f60;
@@ -122,19 +147,10 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
-        .zhanwei {
-            flex: 1 0 auto;
-        }
-        .addbtn {
-            padding-top: 1rem;
-            padding-right: 1rem;
-            height: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            color: #1AAD19;
+        .suiteshowprice {
+            font-size: 0.8rem;
+            text-decoration: line-through;
+            margin-left: 1rem;
         }
     }
-    
 </style>

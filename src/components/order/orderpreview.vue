@@ -138,7 +138,7 @@ export default {
                 .then((response) => {
                     var resultobj = response.data;
                  
-                    //index中已经wx.config，这里直接发起微信支付。
+               //     index中已经wx.config，这里直接发起微信支付。
                     // wx.chooseWXPay({
                     //     timestamp: resultobj.timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
                     //     nonceStr: resultobj.noncestr, // 支付签名随机串，不长于 32 位
@@ -147,13 +147,14 @@ export default {
                     //     paySign: resultobj.paysign, // 支付签名
                     //     success: function (res) {
                     //         // 支付成功后的回调函数
-                            
+                    //         this.$router.push({ name: "orderlist" });//跳转到订单列表
                             
                     //     }
                     // });
 
                     console.log(response.data);
                     this.$router.push({ name: "orderlist" });//跳转到订单列表
+                    
                 })
                 .catch(function (err) {
                     console.log(err);

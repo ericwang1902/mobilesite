@@ -8,6 +8,9 @@
                 <div class="cart_amount_note">
                     ¥ {{$store.getters.getTotalAmount}}
                 </div>
+                <p class="address_btn">
+                    软件园5号楼花木大世界网科技部 
+                </p>
             </div>
             <div class="goto_btn" @click="toOrderPreview()">
                 <div class="btntitle" >
@@ -69,12 +72,21 @@
            flex: 1 1 auto;
            background-color: #444;
            display: flex;
-            align-items: center;
+           align-items: center;
            .cart_amount_note{
                font-size: 1.2rem;
                color: #fff;
                font-weight: 700;
                margin-left: 5rem;
+               flex: 1 1 auto;
+           }
+           .address_btn{
+               font-size: 0.5rem;
+               color: #fff;
+               font-weight: 700;
+               flex: 1 1 100px;
+               overflow:hidden;
+               text-overflow: ellipsis;
            }
        }
        .goto_btn{
