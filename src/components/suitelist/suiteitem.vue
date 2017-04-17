@@ -31,7 +31,7 @@
 
     export default {
 
-        props: ['suiteInfo'],
+        props: ['suiteInfo','Cartcount'],
         components: {
             XButton
         },
@@ -39,6 +39,9 @@
             return {
                 count: 0
             }
+        },
+        created(){
+            this.count=this.Cartcount;
         },
         computed: {
             suiteCls: function () {

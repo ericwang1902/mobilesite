@@ -153,7 +153,7 @@ export default {
                     // });
 
                     console.log(response.data);
-                    this.$router.push({ name: "orderlist" });//跳转到订单列表
+                    this.$router.replace({ name: "orderlist" });//跳转到订单列表
                     
                 })
                 .catch(function (err) {

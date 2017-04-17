@@ -19,12 +19,14 @@
             </div>
             <span class="vux-close" @click="closeDialog">关闭</span>
         </x-dialog>
+        <alert v-model="$store.getters.getAlertinfo.isshow" :title="$store.getters.getAlertinfo.title" >{{$store.getters.getAlertinfo.content}}</alert>
+        
 
     </div>
 </template>
 <script>
     import topDiv from "../components/layout/topDiv";
-    import { XDialog } from 'vux';
+    import { XDialog,Alert } from 'vux';
     import wx from 'weixin-js-sdk';
     import config from "../config/config";
     import utils from "../common/utils";
@@ -32,7 +34,8 @@
     export default {
         components: {
             topDiv,
-            XDialog
+            XDialog,
+            Alert
         },
         data() {
             return {

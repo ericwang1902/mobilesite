@@ -21,6 +21,11 @@ var btntype = 0;//0是表示商家订单提交，1是表示用户订单提交
 
 var ticksign = 2;//0是表示商家订单提交，1是表示用户订单提交,刷新标志
 
+var alertinfo={
+    isshow:false,
+    title:"",
+    content:""
+}
 
 
 //三大件之一：state
@@ -35,7 +40,8 @@ const state = {
     suiteinfo: suiteinfo,//dialog suiteinfo
     userinfo: userinfo,//用户信息
     btntype: btntype,
-    ticksign: ticksign
+    ticksign: ticksign,
+    alertinfo:alertinfo
 }
 
 
@@ -74,6 +80,9 @@ const mutations = {
     },
     setTicksign: function (state, ticksign) {
         state.ticksign = ticksign;
+    },
+    setAlertinfo:function(state,alertinfo){
+        state.alertinfo = alertinfo;
     }
 }
 //三大件之三：getters
@@ -99,7 +108,9 @@ const getters = {
     //getbtntype
     getBtntype: state => { return state.btntype },
     //getticksign
-    getTicksign: state => { return state.ticksign }
+    getTicksign: state => { return state.ticksign },
+    //getAlert
+    getAlertinfo:state=>{return state.alertinfo}
 
 }
 

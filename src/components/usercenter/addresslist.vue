@@ -45,8 +45,10 @@
                 showList1:true,
                 addresslist: [],
                 isshowalert:false,
+
                 title:'',
                 content:'',
+                
                 choosenitem:{}
             }
         },

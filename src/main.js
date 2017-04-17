@@ -22,6 +22,7 @@ import cartfooter from './components/suitelist/cartfooter'
 //订单preview的组件
 import orderpreview from './components/order/orderpreview'
 import orderlist from "./components/order/orderlist"
+import ordersub from './components/order/ordersub'
 
 //初始化粉丝地址列表
 import message from './components/initfan/initmsg'
@@ -67,7 +68,7 @@ const routes = [
         path: 'orderprepay', name: 'orderprepay', components: { a: orderpreview }, meta: { title: "订单预览" }
       },
       {
-        path: 'orderlist', name: 'orderlist', components: { a: orderlist }, meta: { title: "订单列表" }
+        path: 'orderlist', name: 'orderlist', components: { a: orderlist,b:ordersub }, meta: { title: "订单列表" }
       },
       {
         path: 'userbind', name: 'userbind', components: { a: userbind }, meta: { title: "用户绑定" }

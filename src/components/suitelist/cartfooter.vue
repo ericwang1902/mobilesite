@@ -1,63 +1,100 @@
 <template>
-       <div class="buy_cart_container">
-            <div class="countbas">{{$store.getters.getTotalCount}}</div>
-            <div class="cart_icon">
-                <i class="fa fa-shopping-cart fa-2x"></i>
+    <div class="buy_cart_container">
+        <div class="countbas">{{$store.getters.getTotalCount}}</div>
+        <div class="cart_icon">
+            <i class="fa fa-shopping-cart fa-2x"></i>
+        </div>
+        <div class="cart_amout">
+            <div class="cart_amount_note">
+                ¥ {{$store.getters.getTotalAmount}}
             </div>
-            <div class="cart_amout">
-                <div class="cart_amount_note">
-                    ¥ {{$store.getters.getTotalAmount}}
-                </div>
-                <p class="address_btn">
-                    软件园5号楼花木大世界网科技部 
-                </p>
-            </div>
-            <div class="goto_btn" @click="toOrderPreview()">
-                <div class="btntitle" >
-                    去结算
-                </div>
+            <p class="address_btn" @click="tochooseaddress">
+                {{loc}}
+            </p>
+        </div>
+        <div class="goto_btn" @click="toOrderPreview()">
+            <div class="btntitle">
+                去结算
             </div>
         </div>
+    </div>
 </template>
 <script>
+    import {  Confirm } from 'vux'
+    import config from '../../config/config'
     export default {
-        data(){
-            return{
-           
+        data() {
+            return {
+                region: '',
+                address: '',
+                name:'',
+                mobile: '',
+                loc:''
             }
         },
         methods: {
-            toOrderPreview(){
-                this.$router.push({name:'orderprepay'});
+            toOrderPreview() {
+                if(this.$store.getters.getTotalAmount==0){
+                        //需要再补充弹出框
+                        this.$store.commit("setAlertinfo",{
+                            isshow:true,
+                            title:"提示!",
+                            content:"您未选择任何商品！"
+                        })
+
+                        console.log(this.$store.getters.getAlertinfo);
+                }else{
+                    this.$router.push({ name: 'orderprepay' });
+                }
+                
+            },
+            tochooseaddress(){
+                console.log("swdsfd");
+                this.$router.push({ name: 'addlist'});
             }
+        },
+        created() {
+            this.axios.get(config.fans + '/' + this.$store.getters.getUserId)
+                .then((response) => {
+                    this.fansinfo = response.data;
+                    console.log("fansinfo:");
+                    console.log(this.fansinfo);
+                    this.region = this.fansinfo.address.region.regionname;
+                    this.address = this.fansinfo.address.detail;
+                    this.name = this.fansinfo.address.name;
+                    this.mobile = this.fansinfo.address.phone;
+                    
+                    this.loc = this.region+this.address+this.name+this.mobile;
+                })
         }
     }
+
 </script>
-<style lang="scss" scoped> 
-@import '../../assets/mixin';
-.buy_cart_container{
-       display: flex;
-       flex-direction: row;
-       height: 100%;
-       .countbas{
+<style lang="scss" scoped>
+    @import '../../assets/mixin';
+    .buy_cart_container {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        .countbas {
             height: 1.5rem;
             width: 1.5rem;
             position: fixed;
             bottom: 3rem;
             left: 3rem;
             border-radius: 50%;
-            z-index:1;
-            background-color:crimson;
+            z-index: 1;
+            background-color: crimson;
             display: flex;
             justify-content: center;
             align-items: center;
-            color:#fff;
-       }
-       .cart_icon{
+            color: #fff;
+        }
+        .cart_icon {
             display: flex;
             justify-content: center;
             align-items: center;
-            color:#fff;
+            color: #fff;
             position: fixed;
             background-color: #3190e8;
             border: .18rem solid #444;
@@ -66,39 +103,39 @@
             left: 1rem;
             height: 3rem;
             width: 3rem;
-       }
-       .cart_amout{
-           background-color:#FBF9FE;
-           flex: 1 1 auto;
-           background-color: #444;
-           display: flex;
-           align-items: center;
-           .cart_amount_note{
-               font-size: 1.2rem;
-               color: #fff;
-               font-weight: 700;
-               margin-left: 5rem;
-               flex: 1 1 auto;
-           }
-           .address_btn{
-               font-size: 0.5rem;
-               color: #fff;
-               font-weight: 700;
-               flex: 1 1 100px;
-               overflow:hidden;
-               text-overflow: ellipsis;
-           }
-       }
-       .goto_btn{
-           background-color:#4cd964;
-           flex: 0 1 5rem;
+        }
+        .cart_amout {
+            background-color: #FBF9FE;
+            flex: 1 1 auto;
+            background-color: #444;
+            display: flex;
+            align-items: center;
+            .cart_amount_note {
+                font-size: 1.2rem;
+                color: #fff;
+                font-weight: 700;
+                margin-left: 5rem;
+                flex: 1 1 auto;
+            }
+            .address_btn {
+                font-size: 0.5rem;
+                color: #fff;
+                font-weight: 700;
+                flex: 1 1 100px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        .goto_btn {
+            background-color: #4cd964;
+            flex: 0 1 5rem;
             display: flex;
             justify-content: center;
             align-items: center;
-           .btntitle{
+            .btntitle {
                 font-size: .7rem;
                 color: #fff;
-           }
-       }
-}
+            }
+        }
+    }
 </style>
