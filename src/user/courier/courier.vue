@@ -45,7 +45,11 @@ export default {
         this.regionid = this.$route.query.regionid;
         this.openid = this.$route.query.openid;
         this.getficorderbyregion();
+        this.$store.commit('setShowfooter',false);
 
+    },
+    destroyed () {
+        this.$store.commit('setShowfooter',true);
     },
     methods: {
         getstate(ficorder) {

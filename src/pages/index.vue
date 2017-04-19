@@ -5,7 +5,7 @@
             <router-view name="a"></router-view>
         </transition>
 
-        <div class="WFooter">
+        <div class="WFooter" v-if="$store.getters.getShowfooter">
             <transition name="router-slid" mode="out-in">
                 <router-view name="b"></router-view>
             </transition>

@@ -85,6 +85,9 @@ const mutations = {
     },
     setAlertinfo:function(state,alertinfo){
         state.alertinfo = alertinfo;
+    },
+    setShowfooter:function(state,showfooter){
+        state.showfooter= showfooter;
     }
 }
 //三大件之三：getters
@@ -112,7 +115,9 @@ const getters = {
     //getticksign
     getTicksign: state => { return state.ticksign },
     //getAlert
-    getAlertinfo:state=>{return state.alertinfo}
+    getAlertinfo:state=>{return state.alertinfo},
+    //getShowfooter
+    getShowfooter:state=>{return state.showfooter}
 
 }
 
