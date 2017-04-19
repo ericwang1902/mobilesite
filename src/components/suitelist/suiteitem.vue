@@ -64,10 +64,11 @@
                     }
                 }
                 return goodsstr;
-            },
-            totalamount: function () {
-                return this.count * this.suiteInfo.suiteprice;
             }
+            // ,
+            // totalamount: function () {
+            //     return this.count * this.suiteInfo.suiteprice;
+            // }
         },
         watch: {
             count: function (val) {

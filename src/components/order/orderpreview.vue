@@ -82,6 +82,10 @@
                     console.log(err);
                 })
         },
+        mounted () {
+            //用来获取该用户是否是首单
+              console.log("totalamount:"+this.$store.getters.getTotalAmount);
+        },
         computed: {
             itemlist: function () {
                 var itemlisttemp = [];
@@ -90,7 +94,7 @@
                 for (var i = 0; i < cartlist.length; i++) {
                     itemtemp = {
                         label: cartlist[i].suite.suitename + '(¥' + cartlist[i].suite.suiteprice + ')' + ' * ' + cartlist[i].count + '个',
-                        value: '¥' + cartlist[i].suite.suiteprice * cartlist[i].count
+                        value: '¥' + (cartlist[i].suite.suiteprice * cartlist[i].count).toFixed(2)
                     }
                     itemlisttemp.push(itemtemp);
                 }
@@ -98,7 +102,7 @@
 
             },
             totalamount: function () {
-                return this.$store.getters.getTotalAmount
+                return (this.$store.getters.getTotalAmount/100).toFixed(2)
             }
         },
         methods: {
@@ -137,16 +141,16 @@
                             package: resultobj.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
                             signType: resultobj.sintype, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
                             paySign: resultobj.paysign, // 支付签名
-                            success: function (res) {
+                            success:  (res)=> {//需要用箭头函数，这样子才能保证this指针指向vue实例
                                 console.log(res);
-                                 this.$router.push({ name: "orderlist" });//跳转到订单列表
-                                // if (res.errMsg == "chooseWXPay:ok") {
-                                //     //支付成功
-                                //     // 支付成功后的回调函数
-                                //     this.$router.push({ name: "orderlist" });//跳转到订单列表
-                                // } else {
-                                //     alert(res.errMsg);
-                                // }
+                             //    this.$router.push({ name: "orderlist" });//跳转到订单列表
+                                if (res.errMsg == "chooseWXPay:ok") {
+                                    //支付成功 
+                                    // 支付成功后的回调函数
+                                    this.$router.replace({ name: "orderlist" });//跳转到订单列表
+                                } else {
+                                    alert(res.errMsg);
+                                }
 
 
                             },

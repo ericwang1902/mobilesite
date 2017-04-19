@@ -110,7 +110,7 @@
                 this.$store.commit('setCartList', cartlisttemp);
 
                 console.log("购物车清单：" + JSON.stringify(cartlisttemp));
-                this.$store.commit('setTotalAmount', totalamount);
+                this.$store.commit('setTotalAmount', (totalamount*100).toFixed(0));
                 this.$store.commit('setTotalCount', totalcount);
 
             }

@@ -11,7 +11,7 @@
         },
         methods:{
             gotoAddAddress:function(){
-                this.$router.push({ name: 'home'});
+                window.location.replace("http://aft.robustudio.com/mobile/index");
             }
         }
     }

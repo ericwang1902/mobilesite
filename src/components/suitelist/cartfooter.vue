@@ -6,7 +6,7 @@
         </div>
         <div class="cart_amout">
             <div class="cart_amount_note">
-                ¥ {{$store.getters.getTotalAmount}}
+                ¥ {{($store.getters.getTotalAmount/100).toFixed(2)}}
             </div>
             <p class="address_btn" @click="tochooseaddress">
                 {{loc}}
