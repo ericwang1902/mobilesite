@@ -26,6 +26,7 @@ var alertinfo={
     title:"",
     content:""
 }
+var showfooter=true;
 
 
 //三大件之一：state
@@ -41,7 +42,8 @@ const state = {
     userinfo: userinfo,//用户信息
     btntype: btntype,
     ticksign: ticksign,
-    alertinfo:alertinfo
+    alertinfo:alertinfo,
+    showfooter:showfooter
 }
 
 
