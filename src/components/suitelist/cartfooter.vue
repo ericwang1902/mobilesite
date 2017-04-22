@@ -118,7 +118,7 @@
                 flex: 1 1 auto;
             }
             .address_btn {
-                font-size: 0.7rem;
+                font-size: 0.5rem;
                 color: #fff;
                 font-weight: 700;
                 flex: 1 1 100px;
