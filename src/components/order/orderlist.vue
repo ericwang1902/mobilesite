@@ -15,7 +15,7 @@
                         </div>
                     </card>
                     <div>
-                        <span class="suiteprice">¥ {{item.totalamount}}</span>
+                        <span class="suiteprice">¥ {{(item.totalamount/100).toFixed(2)}}</span>
                     </div>
                 </div>
             </div>

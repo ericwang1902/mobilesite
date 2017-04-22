@@ -118,7 +118,7 @@
                 flex: 1 1 auto;
             }
             .address_btn {
-                font-size: 0.5rem;
+                font-size: 0.7rem;
                 color: #fff;
                 font-weight: 700;
                 flex: 1 1 100px;
@@ -133,7 +133,7 @@
             justify-content: center;
             align-items: center;
             .btntitle {
-                font-size: .7rem;
+                font-size: .9rem;
                 color: #fff;
             }
         }

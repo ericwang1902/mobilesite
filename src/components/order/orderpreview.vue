@@ -130,7 +130,7 @@
                 this.content = "重新选择将会清空当前订单"
             },
             postorder() {
-                this.axios.post(config.morder, this.orderdata)
+                this.axios.post(config.morder+"?ps=1", this.orderdata)
                     .then((response) => {
                         var resultobj = response.data;
 
@@ -147,28 +147,40 @@
                                 if (res.errMsg == "chooseWXPay:ok") {
                                     //支付成功 
                                     // 支付成功后的回调函数
-                                    this.$router.replace({ name: "orderlist" });//跳转到订单列表
+                                    this.axios.post(config.morder+"?ps=2", this.orderdata)
+                                    .then((response)=>{
+                                        var orderRes = response.data;
+                                        this.$router.replace({ name: "orderlist" });//跳转到订单列表
+                                    })
+                                    .catch(function(err){
+                                        console.log(err);
+                                    })
+                                    
                                 } else {
                                     alert(res.errMsg);
+                                    
+
+                                     
+
                                 }
 
 
                             },
                             cancel:  (res) =>{
                                 console.log("订单取消")
-                                console.log(config.morder + "/" + resultobj.order._id)
+                             
                                 //  this.axios.post(config.morder, this.orderdata)
                                 //  .then((response) => {})
                                 //  .catch(function(err){})
 
-                                this.axios.delete(config.morder + "/" + resultobj.order._id)
-                                    .then((response) => {
+                                // this.axios.delete(config.morder + "/" + resultobj.order._id)
+                                //     .then((response) => {
 
-                                        console.log("删除取消订单")
-                                    })
-                                    .catch(function (err) {
-                                        console.log(err);
-                                    })
+                                //         console.log("删除取消订单")
+                                //     })
+                                //     .catch(function (err) {
+                                //         console.log(err);
+                                //     })
 
 
 

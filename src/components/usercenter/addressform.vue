@@ -33,7 +33,7 @@ export default {
             regionData:[],//selector的数据源
             district:'',//获取到的districtid
 
-            region:'',
+            region:'请先选择所属地区！',
             detail:'',
             receivername:'',
             receiverphone:'',
@@ -62,8 +62,12 @@ export default {
         getregions:function(districtid){
             this.axios.get(config.mregions+"?districtid="+districtid)
                       .then((response)=>{
-                          this.regionData = response.data;
+                            this.regionData.push({key:"0",value:'请选择！'});
+                          for(var i= 0;i<response.data.length;i++){
+                            this.regionData.push(response.data[i]);
+                          }
                           console.log()
+                          this.region=0;
                       })
                       .catch(function(err){
                           console.log(err);
@@ -88,7 +92,7 @@ export default {
                 fans:this.$store.getters.getUserId
             }
              console.log(formdata)
-            if(!this.detail || !this.receiverphone || !this.receivername || !this.region || !this.$store.getters.getUserId){
+            if(!this.detail || !this.receiverphone || !this.receivername || !this.region || !this.$store.getters.getUserId||this.region==0){
                 this.type=0;
                 this.showAlert("警告","请将信息填写完整！");
             }else{

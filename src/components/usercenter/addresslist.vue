@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div>请从下列地址列表中选择默认收件地址！</div>
          <scroller lock-x scrollbar-y height="-45px" ref="scroller">
             <div class="bck" >
                 <!--<p v-for="i in 60" v-if="showList1">placeholder {{ i + '' + i }}</p>-->
