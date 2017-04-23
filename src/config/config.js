@@ -16,6 +16,8 @@ var config = {
     morderlistagent :baseURL +"/sysmanage/morder/agent",//代理获取订单列表的接口，根据后面是否拼接delivered
     mshoporderlistsupplier:baseURL +"/sysmanage/mshoporder/supplier",//根据店主的id来获取店铺订单
 
+    mdeorder:baseURL+"/mobile/agent/mdeliver",//移动端订单下发
+
     muserbind :baseURL +"/mobile/userbind",//店主、配送员、管理员的微信绑定
     muser:baseURL +"/sysmanage/muser",//根据openid去获取用户信息
     mficorder:baseURL +"/sysmanage/mficorder/ficorderbyregion",//根据regionid去获取ficorder

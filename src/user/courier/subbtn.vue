@@ -21,6 +21,9 @@
             XButton, Confirm
         },
         methods: {
+            onCancel(){
+
+            },
             showAlert(title, content) {
                 this.isshowalert = true;
                 this.title = title;

@@ -10,7 +10,7 @@
                     <span class="suitefont">{{suiteInfo.suitename}}</span>
                     <i @click="itemClick()" class="fa fa-info-circle" aria-hidden="true"></i>
                     <span class="suiteprice">¥ {{suiteInfo.suiteprice}} </span>
-                    <span class="suiteshowprice">原价¥{{suiteInfo.suiteshowprice}}</span>
+                    <span v-if="suiteInfo.suiteprice<suiteInfo.suiteshowprice"class="suiteshowprice">原价¥{{suiteInfo.suiteshowprice}}</span>
                 </div>
 
                 <div class="addbtn">

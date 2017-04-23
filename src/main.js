@@ -41,6 +41,8 @@ import courierdetail from './user/courier/courierdetail'
 
 import subbtn from './user/courier/subbtn'
 
+import dobtn from './user/agent/dobtn';
+
 
 
 Vue.use(VueRouter)
@@ -83,7 +85,7 @@ const routes = [
         path: 'shopowner', name: 'shopowner', components: { a: shopowner }, meta: { title: "店主" }
       },
       {
-        path: 'agent', name: 'agent', components: { a: agent }, meta: { title: "区域代理" }
+        path: 'agent', name: 'agent', components: { a: agent,b:dobtn }, meta: { title: "区域代理" }
       },
       {
         path: 'courierdetail', name: 'courierdetail', components: { a: courierdetail,b:subbtn }, meta: { title: "配送员详情" }

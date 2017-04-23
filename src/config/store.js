@@ -28,6 +28,12 @@ var alertinfo={
 }
 var showfooter=true;
 
+var showdobtn=false;
+
+var deregionid = '';
+
+var searchorder=false;
+
 
 //三大件之一：state
 const state = {
@@ -43,7 +49,11 @@ const state = {
     btntype: btntype,
     ticksign: ticksign,
     alertinfo:alertinfo,
-    showfooter:showfooter
+    showfooter:showfooter,
+    showdobtn:showdobtn,
+    deregionid:deregionid,//用于分发订单时候的regionid
+    searchorder:searchorder//用于刷新页面
+
 }
 
 
@@ -88,6 +98,15 @@ const mutations = {
     },
     setShowfooter:function(state,showfooter){
         state.showfooter= showfooter;
+    },
+    setShowDoBtn:function(state,showdobtn){
+        state.showdobtn = showdobtn;
+    },
+    setDeRegionid:function(state,deregionid){
+        state.deregionid = deregionid;
+    },
+    setSearchorder:function(state,searchorder){
+        state.searchorder = searchorder;
     }
 }
 //三大件之三：getters
@@ -117,8 +136,13 @@ const getters = {
     //getAlert
     getAlertinfo:state=>{return state.alertinfo},
     //getShowfooter
-    getShowfooter:state=>{return state.showfooter}
-
+    getShowfooter:state=>{return state.showfooter},
+    //getShowdobtn
+    getShowDoBtn:state=>{return state.showdobtn},
+    //getDeRegonid
+    getDeRegonid:state=>{return state.deregionid},
+    //getsearchorder
+    getSearchorder:state=>{return state.searchorder}
 }
 
 // 整合初始状态和变更函数，我们就得到了我们所需的 store

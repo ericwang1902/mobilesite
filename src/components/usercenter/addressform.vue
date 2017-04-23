@@ -62,6 +62,7 @@ export default {
         getregions:function(districtid){
             this.axios.get(config.mregions+"?districtid="+districtid)
                       .then((response)=>{
+                          this.regionData=[];
                             this.regionData.push({key:"0",value:'请选择！'});
                           for(var i= 0;i<response.data.length;i++){
                             this.regionData.push(response.data[i]);
