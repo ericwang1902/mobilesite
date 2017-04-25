@@ -8,9 +8,9 @@
             <div class="cart_amount_note">
                 ¥ {{($store.getters.getTotalAmount/100).toFixed(2)}}
             </div>
-            <p class="address_btn" @click="tochooseaddress">
+            <!--<p class="address_btn" @click="tochooseaddress">
                 {{loc}}
-            </p>
+            </p>-->
         </div>
         <div class="goto_btn" @click="toOrderPreview()">
             <div class="btntitle">
@@ -47,25 +47,25 @@
                     this.$router.push({ name: 'orderprepay' });
                 }
                 
-            },
-            tochooseaddress(){
-                console.log("swdsfd");
-                this.$router.push({ name: 'addlist'});
             }
+            // tochooseaddress(){
+            //     console.log("swdsfd");
+            //     this.$router.push({ name: 'addlist'});
+            // }
         },
         created() {
-            this.axios.get(config.fans + '/' + this.$store.getters.getUserId)
-                .then((response) => {
-                    this.fansinfo = response.data;
-                    console.log("fansinfo:");
-                    console.log(this.fansinfo);
-                    this.region = this.fansinfo.address.region.regionname;
-                    this.address = this.fansinfo.address.detail;
-                    this.name = this.fansinfo.address.name;
-                    this.mobile = this.fansinfo.address.phone;
+            // this.axios.get(config.fans + '/' + this.$store.getters.getUserId)
+            //     .then((response) => {
+            //         this.fansinfo = response.data;
+            //         console.log("fansinfo:");
+            //         console.log(this.fansinfo);
+            //         this.region = this.fansinfo.address.region.regionname;
+            //         this.address = this.fansinfo.address.detail;
+            //         this.name = this.fansinfo.address.name;
+            //         this.mobile = this.fansinfo.address.phone;
                     
-                    this.loc = this.region+this.address+this.name+this.mobile;
-                })
+            //         this.loc = this.region+this.address+this.name+this.mobile;
+            //     })
         }
     }
 
@@ -109,15 +109,16 @@
             flex: 1 1 auto;
             background-color: #444;
             display: flex;
+            flex-direction: row;
+            justify-content: center;
             align-items: center;
             .cart_amount_note {
                 font-size: 1.2rem;
                 color: #fff;
                 font-weight: 700;
-                margin-left: 4rem;
                 flex: 0 1 auto;
             }
-            .address_btn {
+            /*.address_btn {
                 font-size: 0.5rem;
                 color: #fff;
                 font-weight: 700;
@@ -125,11 +126,11 @@
                 flex: 1 1 100px;
                 overflow: hidden;
                 text-overflow: ellipsis;
-            }
+            }*/
         }
         .goto_btn {
             background-color: #4cd964;
-            flex: 0 1 5rem;
+            flex: 0 1 7rem;
             display: flex;
             justify-content: center;
             align-items: center;

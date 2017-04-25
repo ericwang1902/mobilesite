@@ -1,11 +1,14 @@
 <template>
-    <scroller lock-x scrollbar-y height="-45px" ref="scroller">
-        <div>
-            <div v-for="item in suitelistNew">
-                <suiteitem @suiteevent="getitemtocart" :Cartcount="item.count" :suiteInfo="item.suite"></suiteitem>
+    <div>
+        <div class="lochead" @click="tochooseaddress"><p><i class="fa fa-map-marker" aria-hidden="true"></i> {{loc1}}</p><p>{{loc2}}</p></div>
+        <scroller lock-x scrollbar-y height="-85px" ref="scroller">
+            <div>
+                <div v-for="item in suitelistNew">
+                    <suiteitem @suiteevent="getitemtocart" :Cartcount="item.count" :suiteInfo="item.suite"></suiteitem>
+                </div>
             </div>
-        </div>
-    </scroller>
+        </scroller>
+    </div>
 </template>
 <script>
     import config from '../../config/config'
@@ -21,14 +24,38 @@
             return {
                 suitelist: [],
                 cartlist: [],
-                suitelistNew: []
+                suitelistNew: [],
+
+                region: '',
+                address: '',
+                name: '',
+                mobile: '',
+                loc1: '',
+                loc2:''
             }
         },
         created() {
             this.getSuites();
             console.log(JSON.stringify(this.$route.query.userid));
+            this.axios.get(config.fans + '/' + this.$store.getters.getUserId)
+                .then((response) => {
+                    this.fansinfo = response.data;
+                    console.log("fansinfo:");
+                    console.log(this.fansinfo);
+                    this.region = this.fansinfo.address.region.regionname;
+                    this.address = this.fansinfo.address.detail;
+                    this.name = this.fansinfo.address.name;
+                    this.mobile = this.fansinfo.address.phone;
+
+                    this.loc1 = this.region + this.address ;
+                    this.loc2= this.name + this.mobile;
+                })
         },
         methods: {
+             tochooseaddress(){
+                console.log("swdsfd");
+                this.$router.push({ name: 'addlist'});
+            },
             getSuites: function () {
                 this.axios.get(config.msuite + '?userid=' + this.$store.getters.getUserId).then((response) => {
                     this.suitelist = response.data;
@@ -39,22 +66,22 @@
                     console.log("this.$store.getters.getCartList");
                     console.log(this.$store.getters.getCartList);
 
-                    this.suitelistNew=[];
+                    this.suitelistNew = [];
                     //根据store中的cartlist来获取count
                     for (var i = 0; i < this.suitelist.length; i++) {
-                        var suitetemp={};
-                        var cartitem=this.$store.getters.getCartList.find(d => d.suite._id == this.suitelist[i]._id);
+                        var suitetemp = {};
+                        var cartitem = this.$store.getters.getCartList.find(d => d.suite._id == this.suitelist[i]._id);
 
                         if (cartitem) {
-                           
-                            suitetemp={
+
+                            suitetemp = {
                                 suite: this.suitelist[i],
                                 amount: cartitem.amount,
                                 count: cartitem.count
                             }
                         }
-                        else{
-                            suitetemp={
+                        else {
+                            suitetemp = {
                                 suite: this.suitelist[i],
                                 amount: 0,
                                 count: 0
@@ -64,7 +91,7 @@
 
                         this.suitelistNew.push(suitetemp);
                     }
-                    
+
                     console.log("suitelistNew")
                     console.log(JSON.stringify(this.suitelistNew))
 
@@ -110,7 +137,7 @@
                 this.$store.commit('setCartList', cartlisttemp);
 
                 console.log("购物车清单：" + JSON.stringify(cartlisttemp));
-                this.$store.commit('setTotalAmount', (totalamount*100).toFixed(0));
+                this.$store.commit('setTotalAmount', (totalamount * 100).toFixed(0));
                 this.$store.commit('setTotalCount', totalcount);
 
             }
@@ -127,5 +154,17 @@
         /*flex: 1 0 auto;*/
         /*设置自动占满除了“占位的30px之外的所有位置”*/
         background-color: #FBF9FE;
+    }
+    
+    .lochead {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #444;
+        font-size: 12px;
+        color: #fff;
+        font-weight: 700;
+        height: 40px;
     }
 </style>
