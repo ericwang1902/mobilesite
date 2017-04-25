@@ -81,7 +81,7 @@
             width: 1.5rem;
             position: fixed;
             bottom: 3rem;
-            left: 3rem;
+            left: 2.5rem;
             border-radius: 50%;
             z-index: 1;
             background-color: crimson;
@@ -96,11 +96,11 @@
             align-items: center;
             color: #fff;
             position: fixed;
-            background-color: #3190e8;
+            background-color:burlywood;
             border: .18rem solid #444;
             border-radius: 50%;
             bottom: 1rem;
-            left: 1rem;
+            left: 0.5rem;
             height: 3rem;
             width: 3rem;
         }
@@ -114,13 +114,14 @@
                 font-size: 1.2rem;
                 color: #fff;
                 font-weight: 700;
-                margin-left: 5rem;
-                flex: 1 1 auto;
+                margin-left: 4rem;
+                flex: 0 1 auto;
             }
             .address_btn {
                 font-size: 0.5rem;
                 color: #fff;
                 font-weight: 700;
+                margin-left: 1rem;
                 flex: 1 1 100px;
                 overflow: hidden;
                 text-overflow: ellipsis;

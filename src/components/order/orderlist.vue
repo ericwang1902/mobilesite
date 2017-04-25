@@ -3,18 +3,17 @@
         <scroller lock-x scrollbar-y use-pullup height="-45px" ref="scroller" @on-pullup-loading="load1" :pullup-config="pullupconfig">
             <div>
                 <div v-for="item in orderlist" class="orderitemrow">
-                    <card>
-                        <div slot="content" class="card-padding">
-                            <p style="color:#999;font-size:12px;"><span style="font-size: 12px;">订单号:</span><span>{{item.ordernum}}</span> </p>
-                            <p style="font-size:12px;line-height:1.2;"><span style="font-size: 12px;margin-right: 0.5rem">状态：</span><span>{{getstate(item.ficorder)}}</span></p>
-                            <p style="font-size:12px;line-height:1.2;"><span style="font-size: 12px;margin-right: 1rem">订单日期:</span><span>{{ordertimefunc(item.ordertime)}}</span></p>
+                        <div  class="itemleft">
+                            <p><span style="font-size: 14px;">订单号:</span><span style="font-size: 14px;color:#999;">{{item.ordernum}}</span> </p>
+                            <p style="font-size:14px;line-height:1.2;"><span style="font-size: 14px;margin-right: 1rem">订单日期:</span><span>{{ordertimefunc(item.ordertime)}}</span></p>
+                            <p style="font-size:14px;line-height:1.2;"><span style="font-size: 14px;margin-right: 0.5rem">状态：</span><span style="font-size: 14px;color:cadetblue;margin-right: 0.5rem">{{getstate(item.ficorder)}}</span></p>
+                           
                             <div v-for="suiteitem in item.suitelist">
-                                <p style="font-size: 12px;margin-right: 0.5rem">{{suiteitem.suite.suitename}}*{{suiteitem.count}}</p>
+                                <p style="font-size: 14px;margin-right: 0.5rem">{{suiteitem.suite.suitename}}*{{suiteitem.count}}</p>
                             </div>
 
                         </div>
-                    </card>
-                    <div>
+                    <div class="pricediv">
                         <span class="suiteprice">¥ {{(item.totalamount/100).toFixed(2)}}</span>
                     </div>
                 </div>
@@ -48,13 +47,13 @@
             },
             getstate(ficorder) {
                 if (!ficorder) {
-                    return "您已成功下单，等待商家接单";
+                    return "已下单";
                 } else {
                     if (ficorder.ficorderstate == '1') {
-                        return "商家已接单，等待配送员取件"
+                        return "已接单"
                     }
                     if (ficorder.ficorderstate == '2') {
-                        return "配送员已取件，配送中"
+                        return "已取件"
                     }
                     if (ficorder.ficorderstate == '3') {
                         return "已送达"
@@ -136,6 +135,7 @@
     .orderitemrow {
         display: flex;
         flex-direction: row;
+        justify-content:space-around;
         /*margin-top: 1rem;*/
         background-color: #ffffff;
         border: .025rem solid #f5f5f5;
@@ -151,11 +151,21 @@
         font-size: 0.9rem;
         font-weight: 800;
     }
+    .itemleft{
+        display: flex;
+        flex-direction:column;
+        justify-content:space-around;
+    }
+    .pricediv{
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+    }
     
     .suiteprice {
         color: #f60;
         margin-left: 1rem;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: 600;
     }
 </style>
