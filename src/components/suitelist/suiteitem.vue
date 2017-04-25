@@ -148,7 +148,8 @@
         .suiteprice {
             color: #f60;
             margin-left: 1rem;
-            font-size: 0.8rem;
+            font-weight: 700;
+            font-size: 1.2rem;
             font-weight: 600;
         }
         .suiteshowprice {
