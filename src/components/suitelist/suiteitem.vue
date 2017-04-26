@@ -1,24 +1,23 @@
 <template>
-    <div :style="suiteCls" >
+    <div :style="suiteCls">
 
-        <div class="suiteClsBottom">
-            <div class="goodstr">{{suiteInfo.suitedes}}</div>
+        <div class="suiteClsBottom" >
+            <!--<div class="goodstr">{{suiteInfo.suitedes}}</div>-->
             <div class="suiterow">
-
                 <div class="suiteinfo">
-                    
                     <span class="suitefont">{{suiteInfo.suitename}}</span>
-                    <i @click="itemClick()" class="fa fa-info-circle" aria-hidden="true"></i>
+                    <!--<i class="fa fa-info-circle" aria-hidden="true"></i>-->
                     <span class="suiteprice">¥ {{suiteInfo.suiteprice}} </span>
-                    <span v-if="suiteInfo.suiteprice<suiteInfo.suiteshowprice"class="suiteshowprice">原价¥{{suiteInfo.suiteshowprice}}</span>
+                    <span v-if="suiteInfo.suiteprice<suiteInfo.suiteshowprice" class="suiteshowprice">原价¥{{suiteInfo.suiteshowprice}}</span>
                 </div>
 
-                <div class="addbtn">
+                <div class="addbtn" @click.stop="">
                     <i @click.stop="movefromcart()" class="fa fa-minus-circle fa-2x" style="margin-right:0.5rem" aria-hidden="true"></i>
                     <p style="color:#fff">{{count}}</p>
                     <i @click.stop="addtocart()" class="fa fa-plus-circle fa-2x" style="margin-left:0.5rem" aria-hidden="true"></i>
                 </div>
-
+            </div>
+            <div class="zhanwei" @click="itemClick()">
 
             </div>
         </div>
@@ -31,7 +30,7 @@
 
     export default {
 
-        props: ['suiteInfo','Cartcount'],
+        props: ['suiteInfo', 'Cartcount'],
         components: {
             XButton
         },
@@ -40,8 +39,8 @@
                 count: 0
             }
         },
-        created(){
-            this.count=this.Cartcount;
+        created() {
+            this.count = this.Cartcount;
         },
         computed: {
             suiteCls: function () {
@@ -83,7 +82,7 @@
         },
         methods: {
             itemClick() {
-                console.log("ddd："+JSON.stringify(this.suiteInfo));
+                console.log("ddd：" + JSON.stringify(this.suiteInfo));
                 this.$store.commit('setXdialogShow', true);
                 this.$store.commit('setsuiteinfo', this.suiteInfo)
 
@@ -111,6 +110,9 @@
         padding-left: 1rem;
         padding-bottom: 0.5rem;
         background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+        .zhanwei{
+            flex: 1 1 auto;
+        }
         .goodstr {
             margin-top: 0.4rem;
             color: #fff;
@@ -144,18 +146,18 @@
                 justify-content: center;
                 color: #1AAD19;
             }
-        }
-        .suiteprice {
-            color: #f60;
-            margin-left: 1rem;
-            font-weight: 700;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        .suiteshowprice {
-            font-size: 0.8rem;
-            text-decoration: line-through;
-            margin-left: 1rem;
+            .suiteprice {
+                color: #f60;
+                margin-left: 1rem;
+                font-weight: 700;
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+            .suiteshowprice {
+                font-size: 0.8rem;
+                text-decoration: line-through;
+                margin-left: 1rem;
+            }
         }
     }
 </style>

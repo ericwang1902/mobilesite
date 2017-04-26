@@ -14,10 +14,10 @@
             <p class="dialog-title">{{$store.getters.getsuiteinfo.suitename}}</p>
             <div class="img-box">
                 <img :src="$store.getters.getsuiteinfo.suitephoto" style="max-width:100%">
+                <p>{{$store.getters.getsuiteinfo.suitedes}}</p>
                 <!--<div>{{$store.getters.getsuiteinfo.goodslist}}</div>-->
-
             </div>
-            <span class="vux-close" @click="closeDialog">关闭</span>
+            <!--<span class="vux-close" @click="closeDialog">X</span>-->
         </x-dialog>
         <alert v-model="$store.getters.getAlertinfo.isshow" :title="$store.getters.getAlertinfo.title" >{{$store.getters.getAlertinfo.content}}</alert>
         
@@ -77,9 +77,9 @@
 
         },
         methods: {
-            closeDialog() {
-                this.$store.commit('setXdialogShow', false);
-            },
+            // closeDialog() {
+            //     this.$store.commit('setXdialogShow', false);
+            // },
             onhide() {
                 console.log("hiede")
                 this.$store.commit('setXdialogShow', false);
