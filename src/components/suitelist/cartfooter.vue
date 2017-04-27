@@ -24,6 +24,7 @@
     import config from '../../config/config'
     export default {
         data() {
+            
             return {
                 region: '',
                 address: '',
