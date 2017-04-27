@@ -6,11 +6,13 @@
         </div>
         <div class="cart_amout">
             <div class="cart_amount_note">
-                ¥ {{($store.getters.getTotalAmount/100).toFixed(2)}}免配送费
+                <div class="note1">
+                        ¥ {{($store.getters.getTotalAmount/100).toFixed(2)}}
+                </div>
             </div>
-            <!--<p class="address_btn" @click="tochooseaddress">
-                {{loc}}
-            </p>-->
+            <p class="descls" @click="tochooseaddress">
+                免配送费
+            </p>
         </div>
         <div class="goto_btn" @click="toOrderPreview()">
             <div class="btntitle">
@@ -121,23 +123,31 @@
             background-color: #444;
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            /*justify-content: center;*/
             align-items: center;
             .cart_amount_note {
                 font-size: 1.2rem;
                 color: #fff;
                 font-weight: 700;
-                flex: 0 1 auto;
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content:flex-end;
+                margin-right:0.5rem;
+                .note1{
+
+                }
             }
-            /*.address_btn {
+            .descls {
                 font-size: 0.5rem;
                 color: #fff;
                 font-weight: 700;
-                margin-left: 1rem;
-                flex: 1 1 100px;
+                margin-right: 1rem;
+                flex: 0 1 auto;
                 overflow: hidden;
                 text-overflow: ellipsis;
-            }*/
+            }
         }
         .goto_btn {
             background-color: #4cd964;

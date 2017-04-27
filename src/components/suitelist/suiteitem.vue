@@ -110,6 +110,7 @@
         padding-left: 1rem;
         padding-bottom: 0.5rem;
         background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+        font-size: 20px;
         .zhanwei{
             flex: 1 1 auto;
         }
@@ -119,7 +120,7 @@
             font-size: 0.7rem;
         }
         .suitefont {
-            margin-right: 1rem;
+            margin-right: 0.6rem;
             color: #fff;
             font-weight: 700;
             font-size: 1rem;
@@ -150,7 +151,7 @@
                 color: #f60;
                 margin-left: 1rem;
                 font-weight: 700;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 font-weight: 600;
             }
             .suiteshowprice {
