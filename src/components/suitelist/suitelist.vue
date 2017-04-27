@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="lochead" @click="tochooseaddress"><p><i class="fa fa-map-marker" aria-hidden="true"></i> {{loc1}}</p><p>{{loc2}}</p></div>
+        <div class="lochead" @click="tochooseaddress">
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{loc1}}</p>
+            <p>{{loc2}}</p>
+        </div>
         <scroller lock-x scrollbar-y height="-85px" ref="scroller">
             <div>
                 <div v-for="item in suitelistNew">
@@ -31,7 +34,7 @@
                 name: '',
                 mobile: '',
                 loc1: '',
-                loc2:''
+                loc2: ''
             }
         },
         created() {
@@ -42,19 +45,24 @@
                     this.fansinfo = response.data;
                     console.log("fansinfo:");
                     console.log(this.fansinfo);
-                    this.region = this.fansinfo.address.region.regionname;
-                    this.address = this.fansinfo.address.detail;
-                    this.name = this.fansinfo.address.name;
-                    this.mobile = this.fansinfo.address.phone;
+                    if (this.fansinfo.address) {
+                        this.region = this.fansinfo.address.region.regionname;
+                        this.address = this.fansinfo.address.detail;
+                        this.name = this.fansinfo.address.name;
+                        this.mobile = this.fansinfo.address.phone;
 
-                    this.loc1 = this.region + this.address ;
-                    this.loc2= this.name + this.mobile;
+                        this.loc1 = this.region + this.address;
+                        this.loc2 = this.name + this.mobile;
+                    }else{
+                        this.loc1 = "请设置配送地址"
+                        this.loc2 = "";
+                    }
                 })
         },
         methods: {
-             tochooseaddress(){
+            tochooseaddress() {
                 console.log("swdsfd");
-                this.$router.push({ name: 'addlist'});
+                this.$router.push({ name: 'addlist' });
             },
             getSuites: function () {
                 this.axios.get(config.msuite + '?userid=' + this.$store.getters.getUserId).then((response) => {

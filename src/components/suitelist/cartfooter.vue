@@ -20,34 +20,55 @@
     </div>
 </template>
 <script>
-    import {  Confirm } from 'vux'
+    import { Confirm } from 'vux'
     import config from '../../config/config'
     export default {
         data() {
-            
+
             return {
                 region: '',
                 address: '',
-                name:'',
+                name: '',
                 mobile: '',
-                loc:''
+                loc: ''
             }
         },
         methods: {
             toOrderPreview() {
-                if(this.$store.getters.getTotalAmount==0){
-                        //需要再补充弹出框
-                        this.$store.commit("setAlertinfo",{
-                            isshow:true,
-                            title:"提示!",
-                            content:"您未选择任何商品！"
-                        })
+                this.axios.get(config.fans + '/' + this.$store.getters.getUserId)
+                    .then((response) => {
+                        this.fansinfo = response.data;
+                        console.log("fansinfo:");
+                        console.log(this.fansinfo);
+                        if (this.fansinfo.address) {
+                            this.region = this.fansinfo.address.region.regionname;
+                            this.address = this.fansinfo.address.detail;
+                            this.name = this.fansinfo.address.name;
+                            this.mobile = this.fansinfo.address.phone;
 
-                        console.log(this.$store.getters.getAlertinfo);
-                }else{
-                    this.$router.push({ name: 'orderprepay' });
-                }
-                
+
+                            if (this.$store.getters.getTotalAmount == 0) {
+                                //需要再补充弹出框
+                                this.$store.commit("setAlertinfo", {
+                                    isshow: true,
+                                    title: "提示!",
+                                    content: "您未选择任何商品！"
+                                })
+
+                                console.log(this.$store.getters.getAlertinfo);
+                            } else {
+                                this.$router.push({ name: 'orderprepay' });
+                            }
+
+                        } else {
+                            this.$store.commit("setAlertinfo", {
+                                isshow: true,
+                                title: "提示!",
+                                content: "请配置配送地址，设置配送地址不会清空购物车！"
+                            })
+                        }
+
+                    })
             }
             // tochooseaddress(){
             //     console.log("swdsfd");
@@ -55,18 +76,7 @@
             // }
         },
         created() {
-            // this.axios.get(config.fans + '/' + this.$store.getters.getUserId)
-            //     .then((response) => {
-            //         this.fansinfo = response.data;
-            //         console.log("fansinfo:");
-            //         console.log(this.fansinfo);
-            //         this.region = this.fansinfo.address.region.regionname;
-            //         this.address = this.fansinfo.address.detail;
-            //         this.name = this.fansinfo.address.name;
-            //         this.mobile = this.fansinfo.address.phone;
-                    
-            //         this.loc = this.region+this.address+this.name+this.mobile;
-            //     })
+
         }
     }
 
@@ -97,7 +107,7 @@
             align-items: center;
             color: #fff;
             position: fixed;
-            background-color:burlywood;
+            background-color: burlywood;
             border: .18rem solid #444;
             border-radius: 50%;
             bottom: 1rem;

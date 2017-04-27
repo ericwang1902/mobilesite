@@ -43,6 +43,8 @@ import subbtn from './user/courier/subbtn'
 
 import dobtn from './user/agent/dobtn';
 
+import districtform from './components/usercenter/districtform';
+
 
 
 Vue.use(VueRouter)
@@ -70,7 +72,7 @@ const routes = [
         path: 'orderprepay', name: 'orderprepay', components: { a: orderpreview }, meta: { title: "订单预览" }
       },
       {
-        path: 'orderlist', name: 'orderlist', components: { a: orderlist,b:ordersub }, meta: { title: "订单列表" }
+        path: 'orderlist', name: 'orderlist', components: { a: orderlist, b: ordersub }, meta: { title: "订单列表" }
       },
       {
         path: 'userbind', name: 'userbind', components: { a: userbind }, meta: { title: "用户绑定" }
@@ -85,10 +87,13 @@ const routes = [
         path: 'shopowner', name: 'shopowner', components: { a: shopowner }, meta: { title: "店主" }
       },
       {
-        path: 'agent', name: 'agent', components: { a: agent,b:dobtn }, meta: { title: "区域代理" }
+        path: 'agent', name: 'agent', components: { a: agent, b: dobtn }, meta: { title: "区域代理" }
       },
       {
-        path: 'courierdetail', name: 'courierdetail', components: { a: courierdetail,b:subbtn }, meta: { title: "配送员详情" }
+        path: 'courierdetail', name: 'courierdetail', components: { a: courierdetail, b: subbtn }, meta: { title: "配送员详情" }
+      },
+      {
+        path: 'districtform', name: 'districtform', components: { a: districtform }, meta: { title: "设置区域" }
       }
 
     ]
