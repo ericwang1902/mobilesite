@@ -1,14 +1,17 @@
 <template>
     <div :style="suiteCls">
 
-        <div class="suiteClsBottom" >
+        <div class="suiteClsBottom">
             <!--<div class="goodstr">{{suiteInfo.suitedes}}</div>-->
             <div class="suiterow">
                 <div class="suiteinfo">
                     <span class="suitefont">{{suiteInfo.suitename}}</span>
                     <!--<i class="fa fa-info-circle" aria-hidden="true"></i>-->
-                    <span class="suiteprice">¥ {{suiteInfo.suiteprice}} </span>
-                    <span v-if="suiteInfo.suiteprice<suiteInfo.suiteshowprice" class="suiteshowprice">原价¥{{suiteInfo.suiteshowprice}}</span>
+                    <div class="suitepricediv">
+                        <span class="suiteprice">¥ {{suiteInfo.suiteprice}} </span>
+                        <span v-if="suiteInfo.suiteprice<suiteInfo.suiteshowprice" class="suiteshowprice">原价¥{{suiteInfo.suiteshowprice}}</span>
+                    </div>
+
                 </div>
 
                 <div class="addbtn" @click.stop="">
@@ -111,19 +114,13 @@
         padding-bottom: 0.5rem;
         background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
         font-size: 20px;
-        .zhanwei{
+        .zhanwei {
             flex: 1 1 auto;
         }
         .goodstr {
             margin-top: 0.4rem;
             color: #fff;
             font-size: 0.7rem;
-        }
-        .suitefont {
-            margin-right: 0.6rem;
-            color: #fff;
-            font-weight: 700;
-            font-size: 1rem;
         }
         .suiterow {
             display: flex;
@@ -132,7 +129,30 @@
             color: #fff;
             .suiteinfo {
                 display: flex;
-                align-items: center;
+                flex-direction: column;
+                justify-content:flex-start;
+                align-items: flex-start;
+                .suitefont {
+                    color: #fff;
+                    font-weight: 700;
+                    font-size: 0.5rem;
+                }
+                .suitepricediv {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    .suiteprice {
+                        color: #f60;
+                        font-weight: 700;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    }
+                    .suiteshowprice {
+                        font-size: 0.8rem;
+                        text-decoration: line-through;
+                        margin-left: 1rem;
+                    }
+                }
             }
             .zhanwei {
                 flex: 1 0 auto;
@@ -146,18 +166,6 @@
                 align-items: center;
                 justify-content: center;
                 color: #1AAD19;
-            }
-            .suiteprice {
-                color: #f60;
-                margin-left: 1rem;
-                font-weight: 700;
-                font-size: 1rem;
-                font-weight: 600;
-            }
-            .suiteshowprice {
-                font-size: 0.8rem;
-                text-decoration: line-through;
-                margin-left: 1rem;
             }
         }
     }
