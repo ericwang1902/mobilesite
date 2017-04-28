@@ -106,7 +106,7 @@
         bottom: 0px;
         /* background-color: aqua;*/
         width: 100%;
-        height: 44px;
+        height: 45px;
     }
     
     .router-fade-enter-active,

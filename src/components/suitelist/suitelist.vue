@@ -1,16 +1,18 @@
 <template>
-    <div>
+    <div style="background-color: #FFC0CB;">
         <div class="lochead" @click="tochooseaddress">
             <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{loc1}}</p>
             <p>{{loc2}}</p>
         </div>
-        <scroller lock-x scrollbar-y height="-85px" ref="scroller">
-            <div>
-                <div v-for="item in suitelistNew">
-                    <suiteitem @suiteevent="getitemtocart" :Cartcount="item.count" :suiteInfo="item.suite"></suiteitem>
+        <div  class="sro" >
+            <scroller lock-x scrollbar-y height="-85px" ref="scroller">
+                <div>
+                    <div v-for="item in suitelistNew">
+                        <suiteitem @suiteevent="getitemtocart" :Cartcount="item.count" :suiteInfo="item.suite"></suiteitem>
+                    </div>
                 </div>
-            </div>
-        </scroller>
+            </scroller>
+        </div>
     </div>
 </template>
 <script>
@@ -53,7 +55,7 @@
 
                         this.loc1 = this.region + this.address;
                         this.loc2 = this.name + this.mobile;
-                    }else{
+                    } else {
                         this.loc1 = "请设置配送地址"
                         this.loc2 = "";
                     }
@@ -156,12 +158,11 @@
 <style>
     .suitescontent {
         width: 100%;
-        background-color: #FBF9FE;
+        background-color: #444;
         position: fixed;
         top: 0rem;
         /*flex: 1 0 auto;*/
         /*设置自动占满除了“占位的30px之外的所有位置”*/
-        background-color: #FBF9FE;
     }
     
     .lochead {
@@ -169,10 +170,15 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: #444;
+        background-color: #FFC0CB;
         font-size: 12px;
-        color: #fff;
+        color: #444;
         font-weight: 700;
         height: 40px;
+       
+    }
+    
+    .sro {
+       
     }
 </style>

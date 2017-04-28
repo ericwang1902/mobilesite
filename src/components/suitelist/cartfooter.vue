@@ -118,16 +118,16 @@
             width: 3rem;
         }
         .cart_amout {
-            background-color: #FBF9FE;
+            background-color: #FFC0CB;
             flex: 1 1 auto;
-            background-color: #444;
+            /*background-color: #444;*/
             display: flex;
             flex-direction: row;
             /*justify-content: center;*/
             align-items: center;
             .cart_amount_note {
                 font-size: 1.2rem;
-                color: #fff;
+                color: #f60;
                 font-weight: 700;
                 flex: 1 1 auto;
                 display: flex;
@@ -141,7 +141,7 @@
             }
             .descls {
                 font-size: 0.5rem;
-                color: #fff;
+                color: #444;
                 font-weight: 700;
                 margin-right: 1rem;
                 flex: 0 1 auto;
@@ -150,14 +150,15 @@
             }
         }
         .goto_btn {
-            background-color: #4cd964;
+            background-color: burlywood;
             flex: 0 1 7rem;
             display: flex;
             justify-content: center;
             align-items: center;
             .btntitle {
                 font-size: .9rem;
-                color: #fff;
+                color: #444;
+                font-weight: 700;
             }
         }
     }
