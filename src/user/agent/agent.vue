@@ -201,7 +201,6 @@ export default {
                     this.heightS = '-45px'
                     this.$store.commit("setShowDoBtn", false);
                     this.tabnum = 1;
-                    
                     console.log(1)
                     break;
                 case 2:
