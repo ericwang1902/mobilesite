@@ -161,6 +161,9 @@ export default {
                 .then((response) => {
                     if (isfirst) {
                         this.total = response.data.count;
+                        if(this.total==0){
+                            this.$refs.scroller.disablePullup();
+                        }
                         console.log('total:'+this.total)
                         this.orderlist = response.data.orders;
                        // console.log("this.orderlist:"+JSON.stringify(this.orderlist))
@@ -216,7 +219,6 @@ export default {
                 default:
                     break;
             }
-            this.pullupconfig.upContent="上拉加载更多";
             this.currentpage=1;
             this.orderlist=[];
             this.$refs.scroller.enablePullup();
@@ -232,10 +234,9 @@ export default {
                     this.$refs.scroller.donePullup();
                 })
             }else if(this.total==0){
-                this.$refs.scroller.donePullup();
+                this.$refs.scroller.disablePullup();
             }else if(this.currentpage > this.total/this.pageitems){
                 this.$refs.scroller.disablePullup();
-                this.pullupconfig.upContent="无更多内容";
             }
 
 
