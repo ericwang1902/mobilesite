@@ -7,7 +7,7 @@
         </tab>
         <selector v-if="$store.getters.getShowDoBtn" required title="商圈(下发必填)" placeholder="必填" :options="regionData" v-model="region" @on-change="regiononChange"></selector>
     
-        <scroller lock-x scrollbar-y :height="heightS" ref="scroller">
+        <scroller lock-x scrollbar-y use-pullup :height="heightS" ref="scroller" @on-pullup-loading="load1" :pullup-config="pullupconfig">
             <div>
                 <div v-for="item in orderlist">
                     <div style="border: .025rem solid #f5f5f5">
@@ -38,20 +38,31 @@ export default {
 
             regionData: [],//selector的数据源
             region: '请先选择所属地区！',
-            tabnum: 1
+            tabnum: 1,
+
+            pageitems: 10,
+            currentpage: 1,
+            total: 0,
+            pullupconfig: {
+                content: '上拉加载更多',
+                downContent: '松开进行加载',
+                upContent: '上拉加载更多',
+                loadingContent: '加载中...',
+                pullUpHeight: 60
+            }
         }
     },
     created() {
         this.openid = this.$route.query.openid;
         this.getuserinfo();
-        
+
     },
-    computed:{
+    computed: {
         ...mapGetters({ searchorder: 'getSearchorder' })
     },
-    watch:{
-        searchorder:function(){
-                 this.getorders(this.tabnum);
+    watch: {
+        searchorder: function () {
+            this.getorders(true, this.tabnum, 10, 1, () => { });
         }
     },
     methods: {
@@ -59,7 +70,7 @@ export default {
             this.axios.get(config.mregions + "?districtid=" + this.userinfo.district._id)
                 .then((response) => {
                     this.regionData = [];
-                    this.getorders(this.tabnum);
+                     this.getorders(true, this.tabnum, 10, 1, () => { });
                     for (var i = 0; i < response.data.length; i++) {
                         this.regionData.push(response.data[i]);
                     }
@@ -73,8 +84,8 @@ export default {
         regiononChange: function (val) {
             console.log(val);
             this.region = val;//取选择的配送区域的id
-            this.$store.commit("setDeRegionid",this.region);
-            this.getorders(this.tabnum);
+            this.$store.commit("setDeRegionid", this.region);
+             this.getorders(true, this.tabnum, 10, 1, () => { });
 
         },
         getuserinfo: function () {
@@ -88,26 +99,36 @@ export default {
                     console.log(err);
                 })
         },
-        getorders(tabnum) {
+        getorders(isfirst, tabnum, pageitems, currentpage, callback) {
+            console.log('isfirst:'+isfirst);
+            console.log('tabnum:'+tabnum);
+            console.log('pageitems:'+pageitems);
+            console.log('currentpage:'+currentpage);
             var params = {};
 
             if (this.region) {
                 if (tabnum == 1) {//已下发
                     params = {
                         districtid: this.userinfo.district._id,
-                        delivered: true
+                        delivered: true,
+                        pageitems: pageitems,
+                        currentpage: currentpage
                     }
 
                 } else if (tabnum == 2) {//未下发
                     params = {
                         districtid: this.userinfo.district._id,
-                        regionid: this.region
+                        regionid: this.region,
+                        pageitems: pageitems,
+                        currentpage: currentpage
                     }
 
                 } else if (tabnum == 3) {
                     params = {
                         districtid: this.userinfo.district._id,
-                        all: true
+                        all: true,
+                        pageitems: pageitems,
+                        currentpage: currentpage
                     }
 
                 }
@@ -115,28 +136,55 @@ export default {
                 if (tabnum == 1) {//已下发
                     params = {
                         districtid: this.userinfo.district._id,
-                        delivered: true
+                        delivered: true,
+                        pageitems: pageitems,
+                        currentpage: currentpage
                     }
 
                 } else if (tabnum == 2) {//未下发
                     params = {
-                        districtid: this.userinfo.district._id
+                        districtid: this.userinfo.district._id,
+                        pageitems: pageitems,
+                        currentpage: currentpage
                     }
                 } else if (tabnum == 3) {
                     params = {
                         districtid: this.userinfo.district._id,
-                        all: true
+                        all: true,
+                        pageitems: pageitems,
+                        currentpage: currentpage
                     }
                 }
             }
 
             this.axios.get(config.morderlistagent, { params: params })
                 .then((response) => {
-                    this.orderlist = response.data;
+                    if (isfirst) {
+                        this.total = response.data.count;
+                        console.log('total:'+this.total)
+                        this.orderlist = response.data.orders;
+                       // console.log("this.orderlist:"+JSON.stringify(this.orderlist))
+                    }else{
+                        var orders = response.data.orders;
+                        for (var i = 0; i < orders.length; i++) {
+                            this.orderlist.push(orders[i])
+                        }
+                       // console.log("this.orderlist:"+JSON.stringify(this.orderlist))
+                    }
+                    
                     this.$nextTick(() => {
-                        this.$refs.scroller.reset({ top: 0 })
+                        if(isfirst){
+                            this.$refs.scroller.reset({top:0});
+                        }else{
+                            this.$refs.scroller.reset();    
+                        }
+
+                        if (!isfirst) {
+                            callback();
+                        }
+
                     })
-                    console.log(response.data);
+                    
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -150,6 +198,7 @@ export default {
                     this.heightS = '-45px'
                     this.$store.commit("setShowDoBtn", false);
                     this.tabnum = 1;
+                    
                     console.log(1)
                     break;
                 case 2:
@@ -167,7 +216,27 @@ export default {
                 default:
                     break;
             }
-            this.getorders(this.tabnum);
+            this.pullupconfig.upContent="上拉加载更多";
+            this.currentpage=1;
+            this.orderlist=[];
+            this.$refs.scroller.enablePullup();
+            this.getorders(true, this.tabnum, 10, this.currentpage, () => { });
+
+
+        },
+        load1() {
+            console.log(this.total/this.pageitems);
+            if (this.currentpage < this.total/this.pageitems) {
+                this.currentpage += 1;
+                this.getorders(false,this.tabnum,this.pageitems, this.currentpage, () => {
+                    this.$refs.scroller.donePullup();
+                })
+            }else if(this.total==0){
+                this.$refs.scroller.donePullup();
+            }else if(this.currentpage > this.total/this.pageitems){
+                this.$refs.scroller.disablePullup();
+                this.pullupconfig.upContent="无更多内容";
+            }
 
 
         }
