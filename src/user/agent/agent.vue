@@ -220,6 +220,7 @@ export default {
             }
             this.currentpage=1;
             this.orderlist=[];
+            this.$refs.scroller.disablePullup();
             this.$refs.scroller.enablePullup();
             this.getorders(true, this.tabnum, 10, this.currentpage, () => { });
 
